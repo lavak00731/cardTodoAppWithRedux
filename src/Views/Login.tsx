@@ -7,18 +7,18 @@ import { DataFromFormType } from "../Interfaces/DataFromFormType";
 export const Login = () => {
   const id = useId();
   const [dataFromForm, setdataFromForm] = useState<DataFromFormType>({user: '', password: ''});
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const checkIfFormIsValid = (dataFromForm:DataFromFormType) => {
     if(dataFromForm.user === '' || dataFromForm.password === '') {
       return false;      
     }
-    localStorage.setItem('user', JSON.stringify({user: dataFromForm.user, "isLogged": true}))
+    sessionStorage.setItem('user', JSON.stringify(dataFromForm.user))
     return true;
   }
   const handleSubmit = (e:FormEvent) => {
     e.preventDefault();
     if(checkIfFormIsValid(dataFromForm)) {
-      navigate('/dashboard', {replace: true})
+      navigate('/dashboard')
     }
   }
 
