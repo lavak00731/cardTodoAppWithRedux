@@ -1,10 +1,8 @@
 import { FormEvent, useEffect, useId, useState } from "react";
 import { useNavigate } from "react-router";
+import { DataFromFormType } from "../Interfaces/DataFromFormType";
 
-interface DataFromFormType {
-  user: string;
-  password: string;
-}
+
 
 export const Login = () => {
   const id = useId();
@@ -20,7 +18,7 @@ export const Login = () => {
   const handleSubmit = (e:FormEvent) => {
     e.preventDefault();
     if(checkIfFormIsValid(dataFromForm)) {
-      navigate('/dashboard')
+      navigate('/dashboard', {replace: true})
     }
   }
 
