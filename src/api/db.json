@@ -8,6 +8,7 @@
             "category": "Development",
             "comment": "Some odd task",
             "tags": ["sample1"],
+            "url": "/prepare-drawing",
             "status": "In Progress"
             
         },
@@ -19,6 +20,7 @@
             "category": "Design",
             "comment": "Designing something",
             "tags": ["sample2"],
+            "url": "/prepare-picture",
             "status": "Not Started"
         },
         {
@@ -29,16 +31,18 @@
             "category": "Ready for Development",
             "comment": "Ready to start development",
             "tags": ["sample3", "sample1"],
+            "url": "/prepare-book",
             "status": "Not Started"
         },
         {
-            "id": 3,
-            "name": "Prepare Book",
+            "id": 4,
+            "name": "Prepare Book2",
             "initDate": "10/11/2024",
             "dueDate": "12/25/2025",
             "category": "Ready for Development",
             "comment": "Ready to start development",
             "tags": ["sample3", "sample1"],
+            "url": "/prepare-book2",
             "status": "Done"
         }
     ],

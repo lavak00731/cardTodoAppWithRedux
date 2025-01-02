@@ -3,7 +3,8 @@ import { useDispatch} from 'react-redux';
 import { LOGIN } from './../Constants/reducerConstans';
 export const ProtectedRoutes = () => {
 
-  const authenticated = JSON.stringify(sessionStorage.getItem('user'));
+  const authenticated = sessionStorage.getItem('user');
+  console.log(authenticated)
 
   const dispatch = useDispatch();
 
@@ -11,8 +12,9 @@ export const ProtectedRoutes = () => {
     dispatch({type: LOGIN, payload: authenticated});
   }
 
-
+console.log(authenticated === null)
   if(!authenticated) {
+    console.log('black')
     return <Navigate to="/" />
   } 
   login();
