@@ -12,7 +12,7 @@ export const Login = () => {
     if(dataFromForm.user === '' || dataFromForm.password === '') {
       return false;      
     }
-    sessionStorage.setItem('user', JSON.stringify(dataFromForm.user))
+    sessionStorage.setItem('sessionData', JSON.stringify({user:dataFromForm.user, isLogged: 'true'}));
     return true;
   }
   const handleSubmit = (e:FormEvent) => {

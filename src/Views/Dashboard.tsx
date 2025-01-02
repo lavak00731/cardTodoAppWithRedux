@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
+import store from './../Store/Store'; 
 import getService from '../Services/getService';
 import { NavComp } from '../Components/NavComp';
 import { Layout } from '../Components/Layout';
+import { useSelector } from 'react-redux';
+import LoggedInfoType from '../Interfaces/LoggedInfoType';
+
+type RootState = ReturnType<typeof store.getState>;
 
 export const Dashboard = () => {
   const [tasks, setTasks] = useState();
-  const user = sessionStorage.getItem('user');
+  const loggedData:LoggedInfoType = useSelector((store: RootState) => store.login);
+
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
@@ -26,7 +32,7 @@ export const Dashboard = () => {
 
   return (
     <Layout>
-      <NavComp user={user}/>
+      <NavComp user={loggedData.user}/>
     </Layout>
   )
 }
