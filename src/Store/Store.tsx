@@ -1,9 +1,13 @@
 import { createStore, combineReducers } from "redux";
 import loginReducer from "../Reducers/LoginReducer";
+import TasksReducer from "../Reducers/TasksReducer";
+import CategoriesReducer from "../Reducers/CategoriesReducer";
 
 
 const unitedReducer = combineReducers({
-    login: loginReducer
+    login: loginReducer,
+    tasks: TasksReducer,
+    categories: CategoriesReducer
 });
 
 const store = createStore(unitedReducer);

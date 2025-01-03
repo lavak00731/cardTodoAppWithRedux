@@ -18,9 +18,9 @@ const dispatch = useDispatch();
     <>
         <header className="container mx-auto flex justify-between p-2">
             <span className="font-semibold text-3xl text-white font-serif">Company Name</span>
-            <nav className="bg-cyan-950 text-white flex justify-between align-middle max-w-xs">
-                <p className='p-2'>Hello, {user}</p>
-                <Link  to="/" className="border-2 border-black-100 bg-white text-cyan-950 p-2" onClick={() => logout()}>Logout</Link>
+            <nav className="bg-transparent text-white flex justify-between align-middle max-w-xs">
+                <p className='p-2'>Hello, <span className="font-semiboldn">{user}</span></p>
+                <Link  to="/" className="border-2 border-black-100 bg-white text-cyan-950 p-2 rounded-md font-bold" onClick={() => logout()}>Logout</Link>
             </nav>
         </header>
     </>
