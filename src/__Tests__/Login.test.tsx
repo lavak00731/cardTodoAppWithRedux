@@ -16,10 +16,9 @@ describe('Login tests', () => {
         test('Click on Send with error', async() =>{
             render(<BrowserRouter><Login /></BrowserRouter>);
             const submit = screen.getByRole('button', {name: 'Login'});
-            const nameField = screen.getByRole('textbox', {name: 'Username'});
-            const passwordField = screen.getByLabelText(/password/i);
-            screen.logTestingPlaygroundURL()
-            
+            const nameField = screen.getByRole('textbox', {name: 'Username'}) as HTMLInputElement;
+            const passwordField = screen.getByLabelText(/password/i) as HTMLInputElement;
+           // screen.logTestingPlaygroundURL()
             await fireEvent(
                 submit,
                 new MouseEvent('click', 
@@ -29,8 +28,8 @@ describe('Login tests', () => {
                     }
                 )
             )
-            expect(nameField).not.toHaveValue();
-            expect(passwordField).not.toHaveValue();
+            expect(nameField.value).toBe('');
+            expect(passwordField.value).toBe('');
         })
-    })
+    });
 });
