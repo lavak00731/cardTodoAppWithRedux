@@ -13,11 +13,11 @@ export const MainComp = () => {
     <>
         <main className="container mx-auto bg-white p-2" aria-labelledby="mainTitle">
           <h1 className="font-mono text-6xl mb-4">Tasks</h1>
-          <ul className="flex flex-row align-top justify-between">
+          <ul className="flex flex-row align-top justify-between divide-x-2 divide-slate-500">
             {
               categories && categories.map((category) => (
-                <li key={category.id}>
-                  <h2 className="font-sans text-3xl">{category.name}</h2>
+                <li className="basis-70 px-2" key={category.id}>
+                  <h2 className="font-sans text-3xl text-center">{category.name}</h2>
                 </li>
               ))
             }
