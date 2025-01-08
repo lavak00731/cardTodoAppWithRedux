@@ -7,8 +7,8 @@ enum statusEnum {
 interface TaskType {
     id: number,
     name: string,
-    initDate: Date,
-    dueDate: Date,
+    initDate: string,
+    dueDate: string,
     category: string,
     comment: string,
     tags: string[],

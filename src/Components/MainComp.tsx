@@ -2,13 +2,16 @@ import { useSelector } from "react-redux";
 import RootState from "../Interfaces/RootState";
 import CategoryType from "../Interfaces/CategoryType";
 import TaskType from "../Interfaces/TasksType";
+import { TaskComponent } from "./TaskComponent";
 
 export const MainComp = () => {
 
   const tasks = useSelector((store: RootState) => store.tasks.items as TaskType[]);
   const categories = useSelector((store: RootState) => store.categories.items as CategoryType[]);
 
-  console.log(tasks)
+  if(!categories) {
+    return <p>Loading...</p>
+  }
   return (
     <>
         <main className="container mx-auto bg-white p-2" aria-labelledby="mainTitle">
@@ -18,6 +21,16 @@ export const MainComp = () => {
               categories && categories.map((category) => (
                 <li className="basis-70 px-2" key={category.id}>
                   <h2 className="font-sans text-3xl text-center">{category.name}</h2>
+                  <ul>
+                  {                    
+                      tasks.filter((task) => task.category === category.name).map((task) => (
+                        
+                        <li key={task.id}>
+                          <TaskComponent {...task} />
+                        </li>
+                      ))                    
+                  }
+                  </ul>
                 </li>
               ))
             }
