@@ -7,7 +7,7 @@ interface LayoutProps {
 export const Layout = ({ children }: LayoutProps) => {
   return (
     <>
-    <div className="bg-green-700">
+    <div className="bg-gradient-to-b from-cyan-500 to-green-700">
         {children}
     </div>
     </>

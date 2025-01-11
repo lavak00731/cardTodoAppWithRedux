@@ -5,9 +5,9 @@ export const TaskComponent = ({name, initDate, dueDate, comment, tags, url, stat
     <section className="max-w-sm rounded overflow-hidden shadow-lg"> 
         <div className="px-6 py-4">
             <h3 className="font-bold text-xl pb-2 border-b-2 border-gray-600">{name}</h3>
-            <p className="text-black"><span className="font-bold">Init Date</span> {initDate}</p>
-            <p className="text-black"><span className="font-bold">Due Date</span> {dueDate}</p>
-            <p className="text-black text-base">
+            <p className="text-black py-2"><span className="font-bold">Init Date</span> {initDate}</p>
+            <p className="text-black py-2"><span className="font-bold">Due Date</span> {dueDate}</p>
+            <p className="text-black py-2 text-base border-t-2 border-gray-600">
                 {comment}
             </p>
         </div>

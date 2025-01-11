@@ -8,6 +8,7 @@ import { MainComp } from '../Components/MainComp';
 import { useDispatch } from 'react-redux';
 import RootState from '../Interfaces/RootState';
 import { CREATETASK, CREATECATEGORY } from '../Constants/reducerConstans';
+import { Footer } from '../Components/Footer';
 
 
 export const Dashboard = () => {
@@ -44,6 +45,7 @@ export const Dashboard = () => {
     <Layout>
       <NavComp user={loggedData.user}/>
       <MainComp />
+      <Footer />
     </Layout>
   )
 }
