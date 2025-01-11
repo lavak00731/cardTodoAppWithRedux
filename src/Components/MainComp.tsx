@@ -14,7 +14,7 @@ export const MainComp = () => {
   }
   return (
     <>
-        <main className="container mx-auto bg-white p-2" aria-labelledby="mainTitle">
+        <main className="container mx-auto bg-white p-2 rounded-t-lg" aria-labelledby="mainTitle">
           <h1 className="font-mono text-6xl mb-4">Tasks</h1>
           <ul className="flex flex-row align-top justify-between divide-x-2 divide-slate-500">
             {
