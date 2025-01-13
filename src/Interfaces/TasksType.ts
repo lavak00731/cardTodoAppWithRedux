@@ -1,4 +1,4 @@
-enum statusEnum {
+export enum statusEnum {
     notStarted = "Not Started",
     inProgress = "In Progress",
     done = "Done"
