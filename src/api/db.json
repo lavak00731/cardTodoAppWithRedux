@@ -79,18 +79,15 @@
     "tags": [
         {
             "id": 1,
-            "name": "sample1",
-            "color":"#36413E"
+            "name": "sample1"
         },
         {
             "id": 2,
-            "name": "sample2",
-            "color": "#52050A"
+            "name": "sample2"
         },
         {
             "id": 3,
-            "name": "sample3",
-            "color": "#38405F"
+            "name": "sample3"
         }
     ]
 }

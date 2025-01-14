@@ -1,6 +1,4 @@
-import { CREATETASK } from "../Constants/reducerConstans";
-import { REMOVETASK } from "../Constants/reducerConstans";
-import { EDITTASK } from "../Constants/reducerConstans";
+import { CREATETASK, REMOVETASK, EDITTASK } from "../Constants/reducerConstans";
 import TaskType from "../Interfaces/TasksType";
 
 
@@ -23,10 +21,11 @@ const TasksReducer = (state = initialState, action:actionInt)=>{
                 ...state,
                 items: action.payload
             }
-        /*case REMOVETASK:
-            return [
-                ...state.filter(task => task !== action.payload[0])
-            ]*/
+        case REMOVETASK:
+            return {
+                ...state,
+                items: state.items.filter(task => task !== action.payload[0])
+            }
         default:
             return state;
     }
