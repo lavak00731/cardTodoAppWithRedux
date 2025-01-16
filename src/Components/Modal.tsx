@@ -20,7 +20,8 @@ export const Modal = ({isVisible, isEdited, task}:ModalType) => {
       tags: [],
       url: "",
       status: statusEnum.notStarted
-    })
+    });
+    const statuses= Object.values(statusEnum) as string[]
     const checkIfitisEdit = () => {
       if(isEdited && Object.keys(task).length > 0) {
         settaskData(task)
@@ -118,6 +119,41 @@ export const Modal = ({isVisible, isEdited, task}:ModalType) => {
                 }))}
                 value={taskData.dueDate}
               />  
+            </div>
+            <div className="flex flex-col mb-4">            
+              <label className="text-gray-900 mb-1" htmlFor={idElem+'_comments'}>Description</label>
+              <textarea className="bg-gray-800 text-white p-2 rounded-md" 
+                id={idElem+'_comments'} 
+                name="taskduedate"  
+                required 
+                onChange={(e) => settaskData(prevState => ({
+                  ...prevState,
+                  comment: e.target.value,
+                }))}
+                value={taskData.comment}
+              ></textarea> 
+            </div>
+            <div className="flex flex-col mb-4">            
+              <label className="text-gray-900 mb-1" htmlFor={idElem+'_status'}>Status</label>
+              <select className="bg-gray-800 text-white p-2 rounded-md" 
+                id={idElem+'_status'} 
+                name="tasktags"
+                required 
+                onChange={(e) => settaskData(prevState => ({
+                  ...prevState,
+                  status: e.target.value as statusEnum,
+                }))}
+                value={taskData.status}
+              >
+                {
+                  statuses.map( (status) => (
+                    <option key={status + Date.now()} value={status}>{status}</option>
+                  ))
+                }
+              </select>  
+            </div>
+            <div className="flex flex-col justify-center">            
+              <button className="bg-blue-900 text-white p-2 rounded-md" type="submit">Login</button>  
             </div>
           </form>
         </div>

@@ -9,11 +9,13 @@ import { useDispatch } from 'react-redux';
 import RootState from '../Interfaces/RootState';
 import { CREATETASK, CREATECATEGORY } from '../Constants/reducerConstans';
 import { Footer } from '../Components/Footer';
+import { Modal } from '../Components/Modal';
 
 
 export const Dashboard = () => {
   const [tasks, setTasks] = useState();
   const [categories, setCategories] = useState();
+  const [tags, setTags] = useState()
   const loggedData:LoggedInfoType = useSelector((store: RootState) => store.login);
   const dispatch = useDispatch();
   
@@ -22,11 +24,12 @@ export const Dashboard = () => {
     const signal = controller.signal;
     getService('http://localhost:5000/tasks', signal).then((data)=> setTasks(data));
     getService('http://localhost:5000/categories', signal).then((data) => setCategories(data));    
+    getService('http://localhost:5000/tags', signal).then((data)=> setTags(data))
     return () => {
       controller.abort();
     }
   }, []);
-  useEffect(() => {
+  useEffect(() => { 
     document.title = 'Dashboard'
   
     return () => {
@@ -45,6 +48,7 @@ export const Dashboard = () => {
     <Layout>
       <NavComp user={loggedData.user}/>
       <MainComp />
+      <Modal />
       <Footer />
     </Layout>
   )
