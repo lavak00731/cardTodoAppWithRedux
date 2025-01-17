@@ -6,7 +6,7 @@ import TagType from "../Interfaces/TagType";
 import ModalType from '../Interfaces/ModalType';
 import TaskType, { statusEnum } from '../Interfaces/TasksType';
 
-export const Modal = ({isVisible, isEdited, task}:ModalType) => {
+export const Modal = () => {
     const idElem = useId();
     const categories = useSelector((store: RootState) => store.categories.items as CategoryType[]);
     const tags = useSelector((store: RootState) => store.categories.items as TagType[]);
@@ -22,13 +22,13 @@ export const Modal = ({isVisible, isEdited, task}:ModalType) => {
       status: statusEnum.notStarted
     });
     const statuses= Object.values(statusEnum) as string[]
-    const checkIfitisEdit = () => {
+    /*const checkIfitisEdit = () => {
       if(isEdited && Object.keys(task).length > 0) {
         settaskData(task)
       } 
-    }
+    }*/
     useEffect(() => {
-      checkIfitisEdit();    
+      //checkIfitisEdit();    
       return () => {}
     })
     const handleSubmit = (e:Event) => {

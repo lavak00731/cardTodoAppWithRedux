@@ -1,8 +1,6 @@
 import { CREATETASK, REMOVETASK, EDITTASK } from "../Constants/reducerConstans";
 import TaskType from "../Interfaces/TasksType";
 
-
-
 interface actionInt {
     type: string,
     payload: TaskType[],
@@ -11,7 +9,6 @@ interface actionInt {
 const initialState = {
     items: []
 };
-
 
 const TasksReducer = (state = initialState, action:actionInt)=>{ 
     switch (action.type) {
