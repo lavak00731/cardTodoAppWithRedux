@@ -1,6 +1,6 @@
-import { OPENCREATEMODAL, OPENEDITMODAL, CLOSECREATEMODAL, CLOSEEDITMODAL } from "../Constants/reducerConstans";
+import { OPENCREATEMODAL, OPENEDITMODAL, CLOSEMODAL } from "../Constants/reducerConstans";
 import ModalType from "../Interfaces/ModalType";
-import TaskType, { statusEnum } from "../Interfaces/TasksType";
+import TaskType, {statusEnum} from "../Interfaces/TasksType";
 
 
 interface actionInt {
@@ -12,16 +12,16 @@ const initialState:ModalType = {
     isVisible: false,
     isEdited: false,
     task: {
-          id: 0,
-          name: "",
-          initDate: "",
-          dueDate: "",
-          category: "",
-          comment: "",
-          tags: [],
-          url: "",
-          status: statusEnum.notStarted
-        }
+        id: 0,
+        name: "",
+        initDate: "",
+        dueDate: "",
+        category: "",
+        comment: "",
+        tags: [],
+        url: "",
+        status: statusEnum.notStarted
+    }
 }
 
 const ModalReducer = (state = initialState, action:actionInt)=>{ 
@@ -39,13 +39,11 @@ const ModalReducer = (state = initialState, action:actionInt)=>{
                 isEdited: true,
                 task: action.payload
             }
-        case CLOSECREATEMODAL:
-        case CLOSEEDITMODAL:
+        case CLOSEMODAL:
             return {
                 ...state,
                 isVisible: false,
                 isEdited: false,
-                task: action.payload
             }
         default:
             return state;

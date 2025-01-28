@@ -1,5 +1,17 @@
-import TaskType from "../Interfaces/TasksType"
-export const TaskComponent = ({name, initDate, dueDate, comment, tags, url, status}:TaskType) => {
+import { useEffect } from "react";
+import TaskType from "../Interfaces/TasksType";
+import { useDispatch } from 'react-redux';
+import { OPENEDITMODAL } from '../Constants/reducerConstans';
+export const TaskComponent = ({id, category, name, initDate, dueDate, comment, tags, url, status}:TaskType) => {
+  const dispatch = useDispatch();
+  const handleEdit = ({id, category, name, initDate, dueDate, comment, tags, url, status}:TaskType) => {
+    dispatch({type: OPENEDITMODAL, payload: {id,category, name, initDate, dueDate, comment, tags, url, status}})
+  }
+  useEffect(() => {
+    
+    return () => {}
+  }, [])
+  
   return (
     <section className="max-w-sm rounded overflow-hidden shadow-lg"> 
         <div className="px-6 py-4">
@@ -19,7 +31,7 @@ export const TaskComponent = ({name, initDate, dueDate, comment, tags, url, stat
             <p className="text-black py-2 text-base border-t-2 border-gray-600 font-extrabold tracking-wide">{status}</p>
         </div>
         <div className="p-3 bg-cyan-500 ">
-            <button type="button" className="bg-white w-full text-black font-semibold p-3 rounded-full border-2 border-black hover:bg-black hover:text-white focus-within:bg-black focus-within:text-white hover:border-white focus-within:border-white">Edit <span className="sr-only">{name}</span></button>
+            <button type="button" onClick={() => handleEdit({id, category, name, initDate, dueDate, comment, tags, url, status})} className="bg-white w-full text-black font-semibold p-3 rounded-full border-2 border-black hover:bg-black hover:text-white focus-within:bg-black focus-within:text-white hover:border-white focus-within:border-white">Edit <span className="sr-only">{name}</span></button>
         </div>        
     </section>
   )

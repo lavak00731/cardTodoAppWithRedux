@@ -48,7 +48,7 @@ export const Dashboard = () => {
     <Layout>
       <NavComp user={loggedData.user}/>
       <MainComp />
-      <Modal />
+      <Modal /> 
       <Footer />
     </Layout>
   )

@@ -3,8 +3,8 @@
         {
             "id": 1,
             "name": "Prepare drawing",
-            "initDate": "10/14/2024",
-            "dueDate": "11/25/2025",
+            "initDate": "2024-10-14",
+            "dueDate": "2025-11-25",
             "category": "Development",
             "comment": "Some odd task",
             "tags": ["sample1"],
@@ -15,8 +15,8 @@
         {
             "id": 2,
             "name": "Prepare picture",
-            "initDate": "10/12/2024",
-            "dueDate": "12/25/2025",
+            "initDate": "2024-12-10",
+            "dueDate": "2025-12-25",
             "category": "Design",
             "comment": "Designing something",
             "tags": ["sample2"],
@@ -26,8 +26,8 @@
         {
             "id": 3,
             "name": "Prepare Book",
-            "initDate": "10/11/2024",
-            "dueDate": "12/25/2025",
+            "initDate": "2024-10-11",
+            "dueDate": "2025-12-25",
             "category": "Ready for Development",
             "comment": "Ready to start development",
             "tags": ["sample3", "sample1"],
@@ -37,8 +37,8 @@
         {
             "id": 4,
             "name": "Prepare Book2",
-            "initDate": "10/11/2024",
-            "dueDate": "12/25/2025",
+            "initDate": "2024-10-11",
+            "dueDate": "2025-12-25",
             "category": "Ready for Development",
             "comment": "Ready to start development",
             "tags": ["sample3", "sample1"],

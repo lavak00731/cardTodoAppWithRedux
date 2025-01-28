@@ -9,7 +9,9 @@ import TaskType, { statusEnum } from '../Interfaces/TasksType';
 export const Modal = () => {
     const idElem = useId();
     const categories = useSelector((store: RootState) => store.categories.items as CategoryType[]);
-    const tags = useSelector((store: RootState) => store.categories.items as TagType[]);
+    const tags = useSelector((store: RootState) => store.tags.items as TagType[]);
+    const modalInfo = useSelector((store: RootState) => store.modal as ModalType);
+    console.log(modalInfo)
     const [taskData, settaskData] = useState<TaskType>({
       id: 0,
       name: "",
@@ -20,7 +22,8 @@ export const Modal = () => {
       tags: [],
       url: "",
       status: statusEnum.notStarted
-    });
+  });
+    
     const statuses= Object.values(statusEnum) as string[]
     /*const checkIfitisEdit = () => {
       if(isEdited && Object.keys(task).length > 0) {
@@ -28,30 +31,32 @@ export const Modal = () => {
       } 
     }*/
     useEffect(() => {
-      //checkIfitisEdit();    
-      return () => {}
-    })
-    const handleSubmit = (e:Event) => {
-      console.log(e)
-    }
-    
+      settaskData(modalInfo.task);  
+    }, [modalInfo, modalInfo.task])
+
+    // const handleSubmit = (e:Event) => {
+    //   console.log(e)
+    // }
+  if(!categories && !tags) {
+    return 'Loading';
+  }
   return (
     <div className="backdrop-opacity-10 backdrop-invert bg-white/30">
-        <div aria-modal="true" hidden={isVisible} role="dialog" tabIndex={-1} className="bg-white" aria-labelledby={idElem+ "modalTitle"}>
-          <h2 id={idElem+ "modalTitle"}>{isEdited ? `Edit ${task.name}` : 'Create Task' }</h2>
-          <form action="" onSubmit={(e) => { handleSubmit(e) }} className="flex flex-col">
+        <div aria-modal="true" hidden={!modalInfo.isVisible} role="dialog" tabIndex={-1} className="bg-white" aria-labelledby={idElem+ "modalTitle"}>
+          <h2 id={idElem+ "modalTitle"}>{modalInfo.isEdited ? `Edit ${modalInfo.task.name}` : 'Create Task' }</h2>
+          <form action="" className="flex flex-col">
             <div className="flex flex-col mb-4">            
               <label className="text-gray-900 mb-1" htmlFor={idElem+'_taskName'}>Task Name</label>
               <input className="bg-gray-800 text-white p-2 rounded-md" 
-                id={idElem+'_taskName'} 
-                name="taskname" 
-                type="text" 
-                required 
+                value={modalInfo.task.name}
+                id={idElem+'_taskName'}
+                name="taskname"
+                type="text"
+                required
                 onChange={(e) => settaskData(prevState => ({
                   ...prevState,
                   name: e.target.value,
                 }))}
-                value={taskData.name}
               />  
             </div>
             <div className="flex flex-col mb-4">            
@@ -73,24 +78,56 @@ export const Modal = () => {
                 }
               </select>  
             </div>
-            <div className="flex flex-col mb-4">            
-              <label className="text-gray-900 mb-1" htmlFor={idElem+'_tags'}>Tags</label>
-              <select className="bg-gray-800 text-white p-2 rounded-md" 
-                id={idElem+'_tags'} 
-                name="tasktags"
-                required 
-                onChange={(e) => settaskData(prevState => ({
-                  ...prevState,
-                  tags: Array.from(e.target.selectedOptions, option => option.value),
-                }))}
-                value={taskData.tags}
-              >
+            <div className="flex flex-col mb-4">
+              <fieldset>
+                <legend className="text-gray-900 mb-3">Tags</legend>
                 {
-                  tags.map( (tag) => (
-                    <option key={tag.id + Date.now()} value={tag.name}>{tag.name}</option>
+                  tags.map( (tag) => (                   
+                    <div className="w-full flex gap-3 mb-2">
+                    <input
+                      className="
+                        peer relative appearance-none shrink-0 w-6 h-6 border-3 rounded-sm ring-2 ring-gray-800 bg-white
+                    focus:ring-offset-5 focus:ring-1 focus:ring-blue-800 focus:outline-dotted focus:outline-2 focus:outline-offset-2
+                        checked:bg-gray-800 checked:border-1
+                        disabled:border-steel-400 disabled:bg-steel-400
+                      "
+                      type="checkbox"
+                      key={tag.id + Date.now()} 
+                      id={tag.id.toString()} 
+                      name="tagname" 
+                      value={tag.name}
+                      onChange={(e) => {
+                        const newTags = taskData.tags.includes(e.target.value)
+                          ? taskData.tags.filter(tag => tag !== e.target.value)
+                          : [...taskData.tags, e.target.value];
+                        settaskData(prevState => ({
+                          ...prevState,
+                          tags: newTags,
+                        }));
+                      }}
+                      checked={ taskData.tags.indexOf(tag.name) !== -1 }
+                    />
+                    <svg
+                      className="absolute w-6 h-6 pointer-events-none hidden peer-checked:block stroke-white outline-none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="4"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <label htmlFor={tag.id.toString()}>
+                      {tag.name}
+                    </label>
+                  </div>                    
                   ))
                 }
-              </select>  
+              </fieldset>    
+                
+  
             </div>
             <div className="flex flex-col mb-4">            
               <label className="text-gray-900 mb-1" htmlFor={idElem+'_initDate'}>Init Date</label>
@@ -103,7 +140,7 @@ export const Modal = () => {
                   ...prevState,
                   initDate: e.target.value,
                 }))}
-                value={taskData.initDate}
+                defaultValue={taskData.initDate}
               />  
             </div>
             <div className="flex flex-col mb-4">            
@@ -117,6 +154,7 @@ export const Modal = () => {
                   ...prevState,
                   dueDateDate: e.target.value,
                 }))}
+               
                 value={taskData.dueDate}
               />  
             </div>
