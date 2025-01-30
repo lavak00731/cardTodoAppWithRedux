@@ -19,7 +19,7 @@ describe('Login tests', () => {
             const submit = screen.getByRole('button', {name: 'Login'});
             fireEvent.change(screen.getByLabelText("Username"), { target: { value: "password123" } })
             fireEvent.change(screen.getByLabelText("Password"), { target: { value: "password123" } })
-           // screen.logTestingPlaygroundURL()
+            //screen.logTestingPlaygroundURL()
            fireEvent.click(submit)
 
            await waitFor(() => {
@@ -27,4 +27,6 @@ describe('Login tests', () => {
            })
         })
     });
+
+
 });

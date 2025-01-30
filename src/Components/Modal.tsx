@@ -25,11 +25,7 @@ export const Modal = () => {
   });
     
     const statuses= Object.values(statusEnum) as string[]
-    /*const checkIfitisEdit = () => {
-      if(isEdited && Object.keys(task).length > 0) {
-        settaskData(task)
-      } 
-    }*/
+    
     useEffect(() => {
       settaskData(modalInfo.task);  
     }, [modalInfo, modalInfo.task])
@@ -37,13 +33,15 @@ export const Modal = () => {
     // const handleSubmit = (e:Event) => {
     //   console.log(e)
     // }
+
+
   if(!categories && !tags) {
     return 'Loading';
   }
   return (
-    <div className="backdrop-opacity-10 backdrop-invert bg-white/30">
-        <div aria-modal="true" hidden={!modalInfo.isVisible} role="dialog" tabIndex={-1} className="bg-white" aria-labelledby={idElem+ "modalTitle"}>
-          <h2 id={idElem+ "modalTitle"}>{modalInfo.isEdited ? `Edit ${modalInfo.task.name}` : 'Create Task' }</h2>
+    <div hidden={!modalInfo.isVisible} className="backdrop-opacity-10 backdrop-invert bg-black/60 fixed inset-0">
+        <div aria-modal="true"  role="dialog" tabIndex={-1} className="bg-white relative translate-y-[50px] transition-all duration-300 ease-in-out opacity-100 w-full mt-7 p-6 lg:max-w-[500px] lg:mx-auto" aria-labelledby={idElem+ "modalTitle"}>
+          <h2 id={idElem+ "modalTitle"} className='font-semibold text-xl mb-2'>{modalInfo.isEdited ? `Edit ${modalInfo.task.name}` : 'Create Task' }</h2>
           <form action="" className="flex flex-col">
             <div className="flex flex-col mb-4">            
               <label className="text-gray-900 mb-1" htmlFor={idElem+'_taskName'}>Task Name</label>
@@ -125,9 +123,7 @@ export const Modal = () => {
                   </div>                    
                   ))
                 }
-              </fieldset>    
-                
-  
+              </fieldset>  
             </div>
             <div className="flex flex-col mb-4">            
               <label className="text-gray-900 mb-1" htmlFor={idElem+'_initDate'}>Init Date</label>
@@ -190,8 +186,9 @@ export const Modal = () => {
                 }
               </select>  
             </div>
-            <div className="flex flex-col justify-center">            
-              <button className="bg-blue-900 text-white p-2 rounded-md" type="submit">Login</button>  
+            <div className="flex flex-row justify-center content-between">
+            <button className="bg-white text-blue-900 p-2 rounded-md w-28" type="submit">Close</button>              
+              <button className="bg-blue-900 text-white p-2 rounded-md w-28" type="submit">{modalInfo.isEdited? 'Edit':'Create'}</button>  
             </div>
           </form>
         </div>

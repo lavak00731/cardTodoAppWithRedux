@@ -13,18 +13,24 @@ import { Modal } from '../Components/Modal';
 
 
 export const Dashboard = () => {
-  const [tasks, setTasks] = useState();
-  const [categories, setCategories] = useState();
-  const [tags, setTags] = useState()
+  const [tasks, setTasks] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [tags, setTags] = useState([])
   const loggedData:LoggedInfoType = useSelector((store: RootState) => store.login);
   const dispatch = useDispatch();
+
+  // Tener un useEffect que escuche al param o query, y si es un valor válido
+  // lanzar el modal.
   
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
     getService('http://localhost:5000/tasks', signal).then((data)=> setTasks(data));
     getService('http://localhost:5000/categories', signal).then((data) => setCategories(data));    
-    getService('http://localhost:5000/tags', signal).then((data)=> setTags(data))
+    getService('http://localhost:5000/tags', signal).then((data)=> {
+      console.log("tags: ->", data);
+      setTags(data)
+    })
     return () => {
       controller.abort();
     }
@@ -36,11 +42,12 @@ export const Dashboard = () => {
       document.title = ''
     }
   }, [])
+
   useEffect(() =>{
     dispatch({type:CREATETASK, payload: tasks});
     dispatch({type:CREATECATEGORY, payload: categories});
     dispatch({type: CREATETAGS, payload: tags});
-  })
+  }, [tags, categories, tasks])
   
   
 

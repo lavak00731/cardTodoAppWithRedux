@@ -3,19 +3,25 @@ import RootState from "../Interfaces/RootState";
 import CategoryType from "../Interfaces/CategoryType";
 import TaskType from "../Interfaces/TasksType";
 import { TaskComponent } from "./TaskComponent";
+import { useEffect } from "react";
 
 export const MainComp = () => {
-
+  
   const tasks = useSelector((store: RootState) => store.tasks.items as TaskType[]);
   const categories = useSelector((store: RootState) => store.categories.items as CategoryType[]);
+  
 
-  if(!categories) {
+  /*
+    trello.com/?tarea=120 o trello.com/120
+  */
+    
+  if(!categories && !tasks) {
     return <p>Loading...</p>
   }
   return (
     <>
         <main className="container mx-auto bg-white p-2 rounded-t-lg" aria-labelledby="mainTitle">
-          <h1 className="font-mono text-6xl mb-4">Tasks</h1>
+          <h1 className="font-mono text-6xl mb-4">Dashboard</h1>
           <ul className="flex flex-row align-top justify-between divide-x-2 divide-slate-500">
             {
               categories && categories.map((category) => (
