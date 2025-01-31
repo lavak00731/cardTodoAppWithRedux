@@ -1,18 +1,19 @@
-import { useEffect, useId, useState } from 'react';
-import { useSelector } from "react-redux";
+import { FormEvent, useEffect, useId, useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
 import RootState from "../Interfaces/RootState";
 import CategoryType from "../Interfaces/CategoryType";
 import TagType from "../Interfaces/TagType";
 import ModalType from '../Interfaces/ModalType';
 import TaskType, { statusEnum } from '../Interfaces/TasksType';
+import { CLOSEMODAL } from '../Constants/reducerConstans';
 
 export const Modal = () => {
     const idElem = useId();
     const categories = useSelector((store: RootState) => store.categories.items as CategoryType[]);
     const tags = useSelector((store: RootState) => store.tags.items as TagType[]);
     const modalInfo = useSelector((store: RootState) => store.modal as ModalType);
-    console.log(modalInfo)
-    const [taskData, settaskData] = useState<TaskType>({
+    const dispatch = useDispatch();
+    const modalInitialState = {
       id: 0,
       name: "",
       initDate: "",
@@ -22,17 +23,24 @@ export const Modal = () => {
       tags: [],
       url: "",
       status: statusEnum.notStarted
-  });
+  }
+    const [taskData, settaskData] = useState<TaskType>(modalInitialState);
     
-    const statuses= Object.values(statusEnum) as string[]
+    const statuses = Object.values(statusEnum) as string[]
     
     useEffect(() => {
       settaskData(modalInfo.task);  
     }, [modalInfo, modalInfo.task])
 
-    // const handleSubmit = (e:Event) => {
-    //   console.log(e)
-    // }
+    const handleClose = () => {
+      dispatch({type: CLOSEMODAL, payload: modalInitialState});
+      
+    }
+    const handleSubmit = (e:FormEvent) => {
+      e.preventDefault();
+      const body = new FormData(e.target as HTMLFormElement)
+      console.log(body)
+    }
 
 
   if(!categories && !tags) {
@@ -42,7 +50,7 @@ export const Modal = () => {
     <div hidden={!modalInfo.isVisible} className="backdrop-opacity-10 backdrop-invert bg-black/60 fixed inset-0">
         <div aria-modal="true"  role="dialog" tabIndex={-1} className="bg-white relative translate-y-[50px] transition-all duration-300 ease-in-out opacity-100 w-full mt-7 p-6 lg:max-w-[500px] lg:mx-auto" aria-labelledby={idElem+ "modalTitle"}>
           <h2 id={idElem+ "modalTitle"} className='font-semibold text-xl mb-2'>{modalInfo.isEdited ? `Edit ${modalInfo.task.name}` : 'Create Task' }</h2>
-          <form action="" className="flex flex-col">
+          <form action="" className="flex flex-col" onSubmit={(e) => {handleSubmit(e)}}>
             <div className="flex flex-col mb-4">            
               <label className="text-gray-900 mb-1" htmlFor={idElem+'_taskName'}>Task Name</label>
               <input className="bg-gray-800 text-white p-2 rounded-md" 
@@ -71,7 +79,7 @@ export const Modal = () => {
               >
                 {
                   categories.map( (category) => (
-                    <option key={category.id + Date.now()} value={category.name}>{category.name}</option>
+                    <option key={category.name + category.id + Date.now()} value={category.name}>{category.name}</option>
                   ))
                 }
               </select>  
@@ -187,7 +195,7 @@ export const Modal = () => {
               </select>  
             </div>
             <div className="flex flex-row justify-center content-between">
-            <button className="bg-white text-blue-900 p-2 rounded-md w-28" type="submit">Close</button>              
+              <button className="bg-white text-blue-900 p-2 rounded-md w-28" type="button" onClick={()=> {handleClose()}}>Close</button>              
               <button className="bg-blue-900 text-white p-2 rounded-md w-28" type="submit">{modalInfo.isEdited? 'Edit':'Create'}</button>  
             </div>
           </form>

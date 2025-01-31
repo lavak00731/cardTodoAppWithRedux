@@ -28,7 +28,7 @@ export const Dashboard = () => {
     getService('http://localhost:5000/tasks', signal).then((data)=> setTasks(data));
     getService('http://localhost:5000/categories', signal).then((data) => setCategories(data));    
     getService('http://localhost:5000/tags', signal).then((data)=> {
-      console.log("tags: ->", data);
+
       setTags(data)
     })
     return () => {

@@ -13,8 +13,8 @@ const unitedReducer = combineReducers({
     tags: TagsReducer,
     modal: ModalReducer
 });
-
-const store = createStore(unitedReducer);
+//@ts-ignore
+const store = createStore(unitedReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 export type RootState = ReturnType<typeof store.getState>;
 
