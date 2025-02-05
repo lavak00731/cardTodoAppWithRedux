@@ -1,6 +1,6 @@
 import {screen, render, fireEvent, waitFor} from '@testing-library/react';   
 import {Login} from '../Views/Login';
-import { describe, test, expect } from 'vitest';
+import { describe, test, expect, afterEach} from 'vitest';
 import '@testing-library/jest-dom'; 
 import { BrowserRouter } from 'react-router';
 import { FakeApp } from './fake/FakeApp';
@@ -24,6 +24,9 @@ describe('Login tests', () => {
 
            await waitFor(() => {
                expect(screen.getByText('Dashboard')).toBeInTheDocument();
+               afterEach(()=>{
+                render(<FakeApp authenticated={{ user: "", isLogged: false }} />)
+               })
            })
         })
     });

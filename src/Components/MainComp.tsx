@@ -24,7 +24,7 @@ export const MainComp = () => {
           <h1 className="font-mono text-6xl mb-4">Dashboard</h1>
           <ul className="flex flex-row align-top justify-between divide-x-2 divide-slate-500">
             {
-              categories && categories.map((category) => (
+              categories.length && categories.map((category) => (
                 <li className="basis-70 px-2" key={category.id}>
                   <h2 className="font-sans text-3xl text-center">{category.name}</h2>
                   <ul>

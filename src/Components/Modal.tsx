@@ -6,6 +6,8 @@ import TagType from "../Interfaces/TagType";
 import ModalType from '../Interfaces/ModalType';
 import TaskType, { statusEnum } from '../Interfaces/TasksType';
 import { CLOSEMODAL } from '../Constants/reducerConstans';
+import createTaskObject from '../Utilities/createTaskObject';
+
 
 export const Modal = () => {
     const idElem = useId();
@@ -23,7 +25,7 @@ export const Modal = () => {
       tags: [],
       url: "",
       status: statusEnum.notStarted
-  }
+    }
     const [taskData, settaskData] = useState<TaskType>(modalInitialState);
     
     const statuses = Object.values(statusEnum) as string[]
@@ -39,7 +41,7 @@ export const Modal = () => {
     const handleSubmit = (e:FormEvent) => {
       e.preventDefault();
       const body = new FormData(e.target as HTMLFormElement)
-      console.log(body)
+      createTaskObject(body, modalInfo)
     }
 
 
@@ -56,7 +58,7 @@ export const Modal = () => {
               <input className="bg-gray-800 text-white p-2 rounded-md" 
                 value={modalInfo.task.name}
                 id={idElem+'_taskName'}
-                name="taskname"
+                name="name"
                 type="text"
                 required
                 onChange={(e) => settaskData(prevState => ({
@@ -69,7 +71,7 @@ export const Modal = () => {
               <label className="text-gray-900 mb-1" htmlFor={idElem+'_categories'}>Categories</label>
               <select className="bg-gray-800 text-white p-2 rounded-md" 
                 id={idElem+'_categories'} 
-                name="taskcategory"
+                name="category"
                 required 
                 onChange={(e) => settaskData(prevState => ({
                   ...prevState,
@@ -137,7 +139,7 @@ export const Modal = () => {
               <label className="text-gray-900 mb-1" htmlFor={idElem+'_initDate'}>Init Date</label>
               <input className="bg-gray-800 text-white p-2 rounded-md" 
                 id={idElem+'_initDate'} 
-                name="taskinitdate" 
+                name="initDate" 
                 type="date" 
                 required 
                 onChange={(e) => settaskData(prevState => ({
@@ -151,7 +153,7 @@ export const Modal = () => {
               <label className="text-gray-900 mb-1" htmlFor={idElem+'_dueDate'}>Due Date</label>
               <input className="bg-gray-800 text-white p-2 rounded-md" 
                 id={idElem+'_dueDate'} 
-                name="taskduedate" 
+                name="dueDate" 
                 type="date" 
                 required 
                 onChange={(e) => settaskData(prevState => ({
@@ -166,7 +168,7 @@ export const Modal = () => {
               <label className="text-gray-900 mb-1" htmlFor={idElem+'_comments'}>Description</label>
               <textarea className="bg-gray-800 text-white p-2 rounded-md" 
                 id={idElem+'_comments'} 
-                name="taskduedate"  
+                name="comment"  
                 required 
                 onChange={(e) => settaskData(prevState => ({
                   ...prevState,
@@ -179,7 +181,7 @@ export const Modal = () => {
               <label className="text-gray-900 mb-1" htmlFor={idElem+'_status'}>Status</label>
               <select className="bg-gray-800 text-white p-2 rounded-md" 
                 id={idElem+'_status'} 
-                name="tasktags"
+                name="status"
                 required 
                 onChange={(e) => settaskData(prevState => ({
                   ...prevState,
