@@ -4,7 +4,8 @@ import ModalType from '../Interfaces/ModalType';
 
 const createTaskObject = (data: FormData, modalInfo: ModalType ) => {
     
-    const object: { [key: string]: any } = {}
+    //const object: { [key: string]: any } = {};
+    console.log(modalInfo)
     console.log(data.get('name'))
     
 }

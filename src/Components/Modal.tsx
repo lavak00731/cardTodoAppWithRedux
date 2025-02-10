@@ -91,7 +91,7 @@ export const Modal = () => {
                 <legend className="text-gray-900 mb-3">Tags</legend>
                 {
                   tags.map( (tag) => (                   
-                    <div className="w-full flex gap-3 mb-2">
+                    <div key={tag.id} className="w-full flex gap-3 mb-2">
                     <input
                       className="
                         peer relative appearance-none shrink-0 w-6 h-6 border-3 rounded-sm ring-2 ring-gray-800 bg-white
