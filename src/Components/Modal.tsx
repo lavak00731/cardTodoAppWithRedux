@@ -41,7 +41,8 @@ export const Modal = () => {
     const handleSubmit = (e:FormEvent) => {
       e.preventDefault();
       const body = new FormData(e.target as HTMLFormElement)
-      createTaskObject(body, modalInfo)
+      const info = createTaskObject(body, modalInfo);
+      console.log(info)
     }
 
 
@@ -161,7 +162,7 @@ export const Modal = () => {
                   dueDateDate: e.target.value,
                 }))}
                
-                value={taskData.dueDate}
+                defaultValue={taskData.dueDate}
               />  
             </div>
             <div className="flex flex-col mb-4">            
