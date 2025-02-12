@@ -9,7 +9,7 @@
 // https://openwebinars.net/blog/redux-toolkit-simplifica-gestion-estado/
 import {screen, render} from '@testing-library/react';   
 import '@testing-library/jest-dom'; 
-import { describe, test, expect, beforeEach } from 'vitest';
+import { describe, test, expect} from 'vitest';
 import { BrowserRouter } from 'react-router';
 import { Dashboard } from '../Views/Dashboard';
 import { Provider } from 'react-redux';
@@ -19,12 +19,18 @@ import { FakeApp } from './fake/FakeApp';
 
 describe('Dashboard tests', ()=>{
     describe('Reach dashboard no logged', ()=>{
+        // beforeEach(()
+        // beforeAll
+        // afterAll
+        // afterEach
+
         test('No Render dashboard without login', ()=>{
 
                 render(<FakeApp authenticated={{ user: "", isLogged: false }} />)
 
             render(<BrowserRouter><Provider store={Store}><ProtectedRoutes><Dashboard /></ProtectedRoutes></Provider></BrowserRouter>);
-            const dashboard = screen.getByText('Dashboard')
+            const dashboard = screen.queryByText('Dashboard')
+            
             expect(dashboard).not.toBeInTheDocument();
         });
         test('Render dashboard  logged in', ()=>{
