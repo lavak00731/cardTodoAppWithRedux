@@ -1,13 +1,25 @@
 import ModalType from '../Interfaces/ModalType';
 import _uniqueId from 'lodash/uniqueId';
+import TaskType, { statusEnum } from '../Interfaces/TasksType';
 
 const createTaskObject = (data: FormData, modalInfo: ModalType ) => {
     
-    const object: { [key: string]: any } = {};
+    const object: TaskType = {
+        id: 0,
+        name: '',
+        initDate: '',
+        dueDate: '',
+        category: '',
+        comment: '',
+        status: statusEnum.notStarted,
+        tags: [],
+        url: "",
+
+    };
    
     const tagsValue: FormDataEntryValue[] = [];
     data.forEach((val, key)=>{
-        if(key === 'tagname') {
+        if(key === 'tags') {
             tagsValue.push(val);
             object[key] = tagsValue;
         } else {

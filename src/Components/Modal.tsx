@@ -7,6 +7,7 @@ import ModalType from '../Interfaces/ModalType';
 import TaskType, { statusEnum } from '../Interfaces/TasksType';
 import { CLOSEMODAL } from '../Constants/reducerConstans';
 import createTaskObject from '../Utilities/createTaskObject';
+import putService from '../Services/putService';
 
 
 export const Modal = () => {
@@ -41,8 +42,13 @@ export const Modal = () => {
     const handleSubmit = (e:FormEvent) => {
       e.preventDefault();
       const body = new FormData(e.target as HTMLFormElement)
-      const info = createTaskObject(body, modalInfo);
-      console.log(info)
+      const info:TaskType = createTaskObject(body, modalInfo);
+      console.log(info);
+      const controller = new AbortController();
+      const signal = controller.signal;
+      const url = `http://localhost:5000/tasks/${info.id}`
+      putService(url, info, signal);
+      handleClose();
     }
 
 
@@ -103,7 +109,7 @@ export const Modal = () => {
                       type="checkbox"
                       key={tag.id + Date.now()} 
                       id={tag.id.toString()} 
-                      name="tagname" 
+                      name="tags" 
                       value={tag.name}
                       onChange={(e) => {
                         const newTags = taskData.tags.includes(e.target.value)

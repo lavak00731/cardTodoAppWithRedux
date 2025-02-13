@@ -15,6 +15,7 @@ export const MainComp = () => {
     trello.com/?tarea=120 o trello.com/120
   */
     
+    
   if(!categories && !tasks) {
     return <p>Loading...</p>
   }
@@ -31,7 +32,7 @@ export const MainComp = () => {
                   {                    
                       tasks.filter((task) => task.category === category.name).map((task) => (
                         
-                        <li key={task.id}>
+                        <li className="basis-3/12" key={task.id}>
                           <TaskComponent {...task} />
                         </li>
                       ))                    

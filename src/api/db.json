@@ -1,93 +1,102 @@
 {
-    "tasks": [
-        {
-            "id": 1,
-            "name": "Prepare drawing",
-            "initDate": "2024-10-14",
-            "dueDate": "2025-11-25",
-            "category": "Development",
-            "comment": "Some odd task",
-            "tags": ["sample1"],
-            "url": "/prepare-drawing",
-            "status": "In Progress"
-            
-        },
-        {
-            "id": 2,
-            "name": "Prepare picture",
-            "initDate": "2024-12-10",
-            "dueDate": "2025-12-25",
-            "category": "Design",
-            "comment": "Designing something",
-            "tags": ["sample2"],
-            "url": "/prepare-picture",
-            "status": "Not Started"
-        },
-        {
-            "id": 3,
-            "name": "Prepare Book",
-            "initDate": "2024-10-11",
-            "dueDate": "2025-12-25",
-            "category": "Ready for Development",
-            "comment": "Ready to start development",
-            "tags": ["sample3", "sample1"],
-            "url": "/prepare-book",
-            "status": "Not Started"
-        },
-        {
-            "id": 4,
-            "name": "Prepare Book2",
-            "initDate": "2024-10-11",
-            "dueDate": "2025-12-25",
-            "category": "Ready for Development",
-            "comment": "Ready to start development",
-            "tags": ["sample3", "sample1"],
-            "url": "/prepare-book2",
-            "status": "Done"
-        }
-    ],
-    "categories": [
-        {
-            "id": 1,
-            "name": "Investigate Design"
-        },
-        {
-            "id": 2,
-            "name": "Design"
-        },
-        {
-            "id": 3,
-            "name": "Ready for Development"
-        },
-        {
-            "id": 4,
-            "name": "Development"
-        },
-        {
-            "id": 5,
-            "name": "Ready for QA"
-        },
-        {
-            "id": 6,
-            "name": "QA"
-        },
-        {
-            "id": 7,
-            "name": "Ready for Client"
-        }
-    ],
-    "tags": [
-        {
-            "id": 1,
-            "name": "sample1"
-        },
-        {
-            "id": 2,
-            "name": "sample2"
-        },
-        {
-            "id": 3,
-            "name": "sample3"
-        }
-    ]
+  "tasks": [
+    {
+      "id": "1",
+      "name": "Prepare drawing",
+      "initDate": "2024-10-14",
+      "dueDate": "2025-11-25",
+      "category": "Development",
+      "comment": "Some odd task",
+      "tags": [
+        "sample1"
+      ],
+      "url": "/prepare-drawing",
+      "status": "In Progress"
+    },
+    {
+      "id": "2",
+      "name": "Prepare picture",
+      "initDate": "2024-12-10",
+      "dueDate": "2025-12-25",
+      "category": "Design",
+      "comment": "Designing something",
+      "tags": [
+        "sample2"
+      ],
+      "url": "/prepare-picture",
+      "status": "Not Started"
+    },
+    {
+      "id": "3",
+      "name": "Prepare Book",
+      "initDate": "2024-12-13",
+      "dueDate": "2026-12-25",
+      "category": "Investigate Design",
+      "comment": "Ready to start developmentdfssdf",
+      "status": "In Progress",
+      "tags": [
+        "sample1",
+        "sample2"
+      ],
+      "url": ""
+    },
+    {
+      "id": "4",
+      "name": "Prepare Book2",
+      "initDate": "2024-10-11",
+      "dueDate": "2025-12-25",
+      "category": "Ready for Development",
+      "comment": "Ready to start development",
+      "tags": [
+        "sample3",
+        "sample1"
+      ],
+      "url": "/prepare-book2",
+      "status": "Done"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Investigate Design"
+    },
+    {
+      "id": "2",
+      "name": "Design"
+    },
+    {
+      "id": "3",
+      "name": "Ready for Development"
+    },
+    {
+      "id": "4",
+      "name": "Development"
+    },
+    {
+      "id": "5",
+      "name": "Ready for QA"
+    },
+    {
+      "id": "6",
+      "name": "QA"
+    },
+    {
+      "id": "7",
+      "name": "Ready for Client"
+    }
+  ],
+  "tags": [
+    {
+      "id": "1",
+      "name": "sample1"
+    },
+    {
+      "id": "2",
+      "name": "sample2"
+    },
+    {
+      "id": "3",
+      "name": "sample3"
+    }
+  ]
 }
