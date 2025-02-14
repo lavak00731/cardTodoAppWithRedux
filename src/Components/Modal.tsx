@@ -5,7 +5,7 @@ import CategoryType from "../Interfaces/CategoryType";
 import TagType from "../Interfaces/TagType";
 import ModalType from '../Interfaces/ModalType';
 import TaskType, { statusEnum } from '../Interfaces/TasksType';
-import { CLOSEMODAL } from '../Constants/reducerConstans';
+import { CLOSEMODAL, EDITTASK } from '../Constants/reducerConstans';
 import createTaskObject from '../Utilities/createTaskObject';
 import putService from '../Services/putService';
 
@@ -43,11 +43,11 @@ export const Modal = () => {
       e.preventDefault();
       const body = new FormData(e.target as HTMLFormElement)
       const info:TaskType = createTaskObject(body, modalInfo);
-      console.log(info);
       const controller = new AbortController();
       const signal = controller.signal;
-      const url = `http://localhost:5000/tasks/${info.id}`
+      const url = `http://localhost:5000/tasks/${info.id}`;      
       putService(url, info, signal);
+      dispatch({type: EDITTASK, payload:info })
       handleClose();
     }
 
@@ -63,15 +63,15 @@ export const Modal = () => {
             <div className="flex flex-col mb-4">            
               <label className="text-gray-900 mb-1" htmlFor={idElem+'_taskName'}>Task Name</label>
               <input className="bg-gray-800 text-white p-2 rounded-md" 
-                value={modalInfo.task.name}
                 id={idElem+'_taskName'}
                 name="name"
                 type="text"
                 required
                 onChange={(e) => settaskData(prevState => ({
                   ...prevState,
-                  name: e.target.value,
+                  name: e.target.value,                 
                 }))}
+                value={taskData.name}
               />  
             </div>
             <div className="flex flex-col mb-4">            
@@ -97,7 +97,7 @@ export const Modal = () => {
               <fieldset>
                 <legend className="text-gray-900 mb-3">Tags</legend>
                 {
-                  tags.map( (tag) => (                   
+                  tags ? tags.map( (tag) => (                   
                     <div key={tag.id} className="w-full flex gap-3 mb-2">
                     <input
                       className="
@@ -138,7 +138,7 @@ export const Modal = () => {
                       {tag.name}
                     </label>
                   </div>                    
-                  ))
+                  )) : null
                 }
               </fieldset>  
             </div>
@@ -203,6 +203,7 @@ export const Modal = () => {
                 }
               </select>  
             </div>
+            <input type="hidden" name="url" value={taskData.url}/>
             <div className="flex flex-row justify-center content-between">
               <button className="bg-white text-blue-900 p-2 rounded-md w-28" type="button" onClick={()=> {handleClose()}}>Close</button>              
               <button className="bg-blue-900 text-white p-2 rounded-md w-28" type="submit">{modalInfo.isEdited? 'Edit':'Create'}</button>  

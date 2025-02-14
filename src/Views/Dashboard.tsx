@@ -17,7 +17,6 @@ export const Dashboard = () => {
   const [categories, setCategories] = useState([]);
   const [tags, setTags] = useState([])
   const loggedData:LoggedInfoType = useSelector((store: RootState) => store.login);
-  console.log(loggedData)
   const dispatch = useDispatch();
 
   // Tener un useEffect que escuche al param o query, y si es un valor válido

@@ -1,5 +1,4 @@
 import ModalType from '../Interfaces/ModalType';
-import _uniqueId from 'lodash/uniqueId';
 import TaskType, { statusEnum } from '../Interfaces/TasksType';
 
 const createTaskObject = (data: FormData, modalInfo: ModalType ) => {
@@ -16,12 +15,12 @@ const createTaskObject = (data: FormData, modalInfo: ModalType ) => {
         url: "",
 
     };
-   
+   console.log(data)
     const tagsValue: FormDataEntryValue[] = [];
     data.forEach((val, key)=>{
         if(key === 'tags') {
-            tagsValue.push(val);
-            object[key] = tagsValue;
+            tagsValue.push(val.toString());
+            object[key] = tagsValue as unknown as string[];
         } else {
             object[key] = val
         }        
@@ -29,7 +28,7 @@ const createTaskObject = (data: FormData, modalInfo: ModalType ) => {
     if(modalInfo.isEdited) {
         object['id'] = modalInfo.task.id;
     } else {
-        object['id'] = _uniqueId('taskId'+Date.now())
+        object['id'] = Date.now()
     }
     return object;
 }

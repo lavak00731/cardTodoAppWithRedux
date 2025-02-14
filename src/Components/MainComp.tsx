@@ -3,7 +3,6 @@ import RootState from "../Interfaces/RootState";
 import CategoryType from "../Interfaces/CategoryType";
 import TaskType from "../Interfaces/TasksType";
 import { TaskComponent } from "./TaskComponent";
-import { useEffect } from "react";
 
 export const MainComp = () => {
   
@@ -14,7 +13,7 @@ export const MainComp = () => {
   /*
     trello.com/?tarea=120 o trello.com/120
   */
-    
+    console.log(tasks)
     
   if(!categories && !tasks) {
     return <p>Loading...</p>

@@ -7,11 +7,12 @@
       "dueDate": "2025-11-25",
       "category": "Development",
       "comment": "Some odd task",
+      "status": "In Progress",
       "tags": [
-        "sample1"
+        "sample1",
+        "sample2"
       ],
-      "url": "/prepare-drawing",
-      "status": "In Progress"
+      "url": "/prepare-drawing"
     },
     {
       "id": "2",
@@ -19,26 +20,27 @@
       "initDate": "2024-12-10",
       "dueDate": "2025-12-25",
       "category": "Design",
-      "comment": "Designing something",
+      "comment": "Designing somethingzzzz",
+      "status": "In Progress",
       "tags": [
+        "sample1",
         "sample2"
       ],
-      "url": "/prepare-picture",
-      "status": "Not Started"
+      "url": "/prepare-picture"
     },
     {
       "id": "3",
       "name": "Prepare Book",
       "initDate": "2024-12-13",
       "dueDate": "2026-12-25",
-      "category": "Investigate Design",
+      "category": "Ready for Development",
       "comment": "Ready to start developmentdfssdf",
       "status": "In Progress",
       "tags": [
         "sample1",
         "sample2"
       ],
-      "url": ""
+      "url": "/prepare-book"
     },
     {
       "id": "4",
