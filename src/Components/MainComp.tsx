@@ -24,12 +24,12 @@ export const MainComp = () => {
           <h1 className="font-mono text-6xl mb-4">Dashboard</h1>
           <ul className="flex flex-col gap-6 justify-between divide-y-2 divide-slate-500">
             {
-              categories ? categories.map((category) => (
+              categories ? categories?.map((category) => (
                 <li className="basis-70 pt-3 p-2" key={category.id}>
                   <h2 className="font-sans text-3xl text-center">{category.name}</h2>
                   <ul className="flex flex-row gap-3">
                   {                    
-                      tasks.filter((task) => task.category === category.name).map((task) => (
+                      tasks?.filter((task) => task.category === category.name).map((task) => (
                         
                         <li className="basis-3/12" key={task.id}>
                           <TaskComponent {...task} />
