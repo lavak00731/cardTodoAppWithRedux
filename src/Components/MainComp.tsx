@@ -3,6 +3,7 @@ import RootState from "../Interfaces/RootState";
 import CategoryType from "../Interfaces/CategoryType";
 import TaskType from "../Interfaces/TasksType";
 import { TaskComponent } from "./TaskComponent";
+import { UtilityBar } from "./UtilityBar";
 
 export const MainComp = () => {
   
@@ -13,7 +14,6 @@ export const MainComp = () => {
   /*
     trello.com/?tarea=120 o trello.com/120
   */
-    console.log(tasks)
     
   if(!categories && !tasks) {
     return <p>Loading...</p>
@@ -22,6 +22,7 @@ export const MainComp = () => {
     <>
         <main className="container mx-auto bg-white p-2 rounded-t-lg" aria-labelledby="mainTitle">
           <h1 className="font-mono text-6xl mb-4">Dashboard</h1>
+          <UtilityBar/>
           <ul className="flex flex-col gap-6 justify-between divide-y-2 divide-slate-500">
             {
               categories ? categories?.map((category) => (
