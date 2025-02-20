@@ -14,7 +14,7 @@ export const Modal = () => {
     const idElem = useId();
     const categories = useSelector((store: RootState) => store.categories.items as CategoryType[]);
     const tags = useSelector((store: RootState) => store.tags.items as TagType[]);
-    const tasks = useSelector((store: RootState) => store.tasks.items as TaskType[]);
+    
     const modalInfo = useSelector((store: RootState) => store.modal as ModalType);
     const dispatch = useDispatch();
     const modalInitialState = {

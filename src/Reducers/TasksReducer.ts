@@ -20,10 +20,7 @@ const TasksReducer = (state = initialState, action:actionInt)=>{
         case EDITTASK:
             /* const editedElem = state.items.find((item:TaskType, index) => item.id === action.payload.id)
             const editedElemIndex = state.items.findIndex((item:TaskType, index) => item.id === action.payload.id)
-            editedElem?.name = action.payload.name
-
- */
-
+            editedElem?.name = action.payload.name*/
             return {
                 ...state,
                 //items: [state.items.slice(0, editedElemIndex - 1), editedElem, state.items.slice(editedElemIndex, state.items.length - 1)]
@@ -38,7 +35,7 @@ const TasksReducer = (state = initialState, action:actionInt)=>{
         case REMOVETASK:
             return {
                 ...state,
-                items: state.items.filter(task => task !== action.payload.id)
+                items: state.items.filter(task => task.id !== action.payload.id)
             }
         default:
             return state;
