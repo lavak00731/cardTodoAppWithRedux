@@ -1,5 +1,5 @@
-import { LOGIN } from "../Constants/reducerConstans";
-import { LOGOUT } from "../Constants/reducerConstans";
+import { LOGIN } from "../Constants/reducerConstants";
+import { LOGOUT } from "../Constants/reducerConstants";
 
 interface initialStateInt { 
     user: string,

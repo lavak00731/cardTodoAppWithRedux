@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { useDispatch } from 'react-redux';
-import { LOGOUT } from './../Constants/reducerConstans';
+import { LOGOUT } from '../Constants/reducerConstants';
 
 
 interface NavCompProps {

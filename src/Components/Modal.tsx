@@ -5,16 +5,16 @@ import CategoryType from "../Interfaces/CategoryType";
 import TagType from "../Interfaces/TagType";
 import ModalType from '../Interfaces/ModalType';
 import TaskType, { statusEnum } from '../Interfaces/TasksType';
-import { CLOSEMODAL, EDITTASK } from '../Constants/reducerConstans';
+import { CLOSEMODAL, EDITTASK, CREATETASK } from '../Constants/reducerConstants';
 import createTaskObject from '../Utilities/createTaskObject';
 import putService from '../Services/putService';
+import postService from '../Services/postService';
 
 
 export const Modal = () => {
     const idElem = useId();
     const categories = useSelector((store: RootState) => store.categories.items as CategoryType[]);
-    const tags = useSelector((store: RootState) => store.tags.items as TagType[]);
-    
+    const tags = useSelector((store: RootState) => store.tags.items as TagType[]);    
     const modalInfo = useSelector((store: RootState) => store.modal as ModalType);
     const dispatch = useDispatch();
     const modalInitialState = {
@@ -46,9 +46,15 @@ export const Modal = () => {
       const info:TaskType = createTaskObject(body, modalInfo);
       const controller = new AbortController();
       const signal = controller.signal;
-      const url = `http://localhost:5000/tasks/${info.id}`;      
-      putService(url, info, signal);
-      dispatch({type: EDITTASK, payload: info })
+      const url = `http://localhost:5000/tasks/${info.id}`;  
+      if(modalInfo.isEdited) {
+        putService(url, info, signal);
+        dispatch({type: EDITTASK, payload: info });
+      } else {
+        postService(url, info, signal);
+        dispatch({type: CREATETASK, payload: info});
+      }
+      
       handleClose();
     }
 

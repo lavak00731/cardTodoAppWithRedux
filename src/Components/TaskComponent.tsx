@@ -1,16 +1,11 @@
-import { useEffect } from "react";
 import TaskType from "../Interfaces/TasksType";
 import { useDispatch } from 'react-redux';
-import { OPENEDITMODAL } from '../Constants/reducerConstans';
+import { OPENEDITMODAL } from '../Constants/reducerConstants';
 export const TaskComponent = ({id, category, name, initDate, dueDate, comment, tags, url, status}:TaskType) => {
   const dispatch = useDispatch();
   const handleEdit = ({id, category, name, initDate, dueDate, comment, tags, url, status}:TaskType) => {
     dispatch({type: OPENEDITMODAL, payload: {id,category, name, initDate, dueDate, comment, tags, url, status}})
   }
-  useEffect(() => {
-    
-    return () => {}
-  }, [])
   
   return (
     <section className="max-w-sm rounded overflow-hidden shadow-lg"> 

@@ -1,4 +1,4 @@
-import { CREATETAGS, MODIFYTAGS, REMOVETAGS } from "../Constants/reducerConstans";
+import { CREATETAGS, MODIFYTAGS, REMOVETAGS } from "../Constants/reducerConstants";
 import  TagType from "../Interfaces/TagType";
 
 interface actionInt {

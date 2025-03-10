@@ -1,4 +1,4 @@
-import { CREATETASK, REMOVETASK, EDITTASK } from "../Constants/reducerConstans";
+import { CREATETASK, REMOVETASK, EDITTASK } from "../Constants/reducerConstants";
 import TaskType from "../Interfaces/TasksType";
 
 interface actionInt {

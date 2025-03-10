@@ -1,4 +1,4 @@
-import { CREATECATEGORY, MODIFYCATEGORY } from "../Constants/reducerConstans";
+import { CREATECATEGORY, MODIFYCATEGORY } from "../Constants/reducerConstants";
 import CategoryType from "../Interfaces/CategoryType";
 
 interface actionInt {

@@ -9,7 +9,7 @@ export const MainComp = () => {
   
   const tasks = useSelector((store: RootState) => store.tasks.items as TaskType[]);
   const categories = useSelector((store: RootState) => store.categories.items as CategoryType[]);
-  
+  console.log(tasks);
 
   /*
     trello.com/?tarea=120 o trello.com/120

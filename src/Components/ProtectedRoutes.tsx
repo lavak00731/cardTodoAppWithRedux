@@ -1,6 +1,6 @@
 import { Outlet, Navigate } from "react-router";
 import { useDispatch} from 'react-redux';
-import { LOGIN } from './../Constants/reducerConstans';
+import { LOGIN } from '../Constants/reducerConstants';
 export const ProtectedRoutes = () => {
 
   const sessionData = sessionStorage.getItem('sessionData');

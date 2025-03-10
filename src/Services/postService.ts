@@ -1,10 +1,10 @@
 import TaskType from "../Interfaces/TasksType";
 
-const putService = async (url:string, task: TaskType , signal:AbortSignal) => {
+const postService = async (url:string, task: TaskType , signal:AbortSignal) => {
     try {
         const response = await fetch(url, {
             signal,
-            method: "PUT",
+            method: "POST",
             body: JSON.stringify(task),
         });
         if(response.ok) {
@@ -16,4 +16,4 @@ const putService = async (url:string, task: TaskType , signal:AbortSignal) => {
     }
     
 }
-export default putService;
+export default postService;
