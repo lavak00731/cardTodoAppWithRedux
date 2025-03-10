@@ -18,11 +18,16 @@ const createTaskObject = (data: FormData, modalInfo: ModalType ) => {
    console.log(data)
     const tagsValue: FormDataEntryValue[] = [];
     data.forEach((val, key)=>{
+        
         if(key === 'tags') {
             tagsValue.push(val.toString());
             object[key] = tagsValue as unknown as string[];
-        } 
-        object[key] = val 
+
+
+        } else {
+            object[key] = val 
+        }
+        
                   
     })
     if(modalInfo.isEdited) {
@@ -31,7 +36,7 @@ const createTaskObject = (data: FormData, modalInfo: ModalType ) => {
         object['id'] = Date.now();
         object['url'] = encodeURIComponent(object['name']);
     }
-    console.log(object);
+    console.log(object)
     return object;
 }
 export default createTaskObject

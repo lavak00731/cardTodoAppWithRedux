@@ -30,12 +30,12 @@ export const MainComp = () => {
                   <h2 className="font-sans text-3xl text-center">{category.name}</h2>
                   <ul className="flex flex-row gap-3">
                   {                    
-                      tasks?.filter((task) => task.category === category.name).map((task) => (
+                    tasks ?  tasks?.filter((task) => task.category === category.name).map((task) => (
                         
                         <li className="basis-3/12" key={task.id}>
                           <TaskComponent {...task} />
                         </li>
-                      ))                    
+                      )) : null                  
                   }
                   </ul>
                 </li>

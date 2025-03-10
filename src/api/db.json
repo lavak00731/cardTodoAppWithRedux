@@ -9,8 +9,7 @@
       "comment": "Some odd task",
       "status": "In Progress",
       "tags": [
-        "sample1",
-        "sample2"
+        "sample3"
       ],
       "url": "/prepare-drawing"
     },
@@ -24,8 +23,7 @@
       "status": "In Progress",
       "tags": [
         "sample1",
-        "sample2",
-        "sample3"
+        "sample2"
       ],
       "url": "/prepare-picture"
     },

@@ -6,17 +6,16 @@ export const TaskComponent = ({id, category, name, initDate, dueDate, comment, t
   const handleEdit = ({id, category, name, initDate, dueDate, comment, tags, url, status}:TaskType) => {
     dispatch({type: OPENEDITMODAL, payload: {id,category, name, initDate, dueDate, comment, tags, url, status}})
   }
-  
   return (
     <section className="max-w-sm rounded overflow-hidden shadow-lg"> 
         <div className="px-6 py-4">
             <h3 className="font-bold text-xl pb-2">{name}</h3>
             <div className="pt-4 pb-2 border-y-2 border-gray-600 my-2 ">
-                {tags.map((tag) => (
+                {tags ? tags.map((tag) => (
                     <span key={tag+Date.now} className="inline-block  text-cyan-950 px-3 py-1 text-center text-sm font-semibold mb-2">
                         #{tag}
                     </span>
-                ))}            
+                )) : null}            
             </div>
             <p className="text-black py-2"><span className="font-bold">Init Date</span> {initDate}</p>
             <p className="text-black py-2"><span className="font-bold">Due Date</span> {dueDate}</p>
