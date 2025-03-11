@@ -32,7 +32,7 @@ const createTaskObject = (data: FormData, modalInfo: ModalType ) => {
     if(modalInfo.isEdited) {
         object['id'] = modalInfo.task.id;
     } else {
-        //object['id'] = Date.now();
+        object['id'] = Date.now();
         object['url'] = encodeURIComponent(object['name']);
     }
     return object;

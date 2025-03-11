@@ -56,8 +56,7 @@ export const Modal = () => {
         const url = `http://localhost:5000/tasks/`; 
         postService(url, info, signal);
         const newTasks = tasks.push(info);
-        console.log(newTasks);
-        dispatch({type: CREATETASK, payload: newTasks});
+        dispatch({type: EDITTASK, payload: newTasks});
       }
       
       handleClose();
