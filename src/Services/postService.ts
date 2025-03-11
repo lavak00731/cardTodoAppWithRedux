@@ -5,6 +5,9 @@ const postService = async (url:string, task: TaskType , signal:AbortSignal) => {
         const response = await fetch(url, {
             signal,
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+            },
             body: JSON.stringify(task),
         });
         if(response.ok) {

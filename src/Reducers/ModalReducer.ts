@@ -44,6 +44,7 @@ const ModalReducer = (state = initialState, action:actionInt)=>{
                 ...state,
                 isVisible: false,
                 isEdited: false,
+                task: action.payload
             }
         default:
             return state;

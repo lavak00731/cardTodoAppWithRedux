@@ -14,6 +14,7 @@ import postService from '../Services/postService';
 export const Modal = () => {
     const idElem = useId();
     const categories = useSelector((store: RootState) => store.categories.items as CategoryType[]);
+    const tasks = useSelector((store: RootState) => store.tasks.items as TaskType[]);
     const tags = useSelector((store: RootState) => store.tags.items as TagType[]);    
     const modalInfo = useSelector((store: RootState) => store.modal as ModalType);
     const dispatch = useDispatch();
@@ -46,13 +47,17 @@ export const Modal = () => {
       const info:TaskType = createTaskObject(body, modalInfo);
       const controller = new AbortController();
       const signal = controller.signal;
-      const url = `http://localhost:5000/tasks/${info.id}`;  
+       
       if(modalInfo.isEdited) {
+        const url = `http://localhost:5000/tasks/${info.id}`; 
         putService(url, info, signal);
         dispatch({type: EDITTASK, payload: info });
       } else {
+        const url = `http://localhost:5000/tasks/`; 
         postService(url, info, signal);
-        dispatch({type: CREATETASK, payload: info});
+        const newTasks = tasks.push(info);
+        console.log(newTasks);
+        dispatch({type: CREATETASK, payload: newTasks});
       }
       
       handleClose();

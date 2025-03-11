@@ -5,7 +5,7 @@
       "name": "Prepare drawing",
       "initDate": "2024-10-14",
       "dueDate": "2025-11-25",
-      "category": "Development",
+      "category": "QA",
       "comment": "Some odd task",
       "status": "In Progress",
       "tags": [
@@ -23,7 +23,8 @@
       "status": "In Progress",
       "tags": [
         "sample1",
-        "sample2"
+        "sample2",
+        "sample3"
       ],
       "url": "/prepare-picture"
     },
@@ -53,6 +54,20 @@
         "sample3"
       ],
       "url": "/prepare-book2"
+    },
+    {
+      "id": 0,
+      "name": "Ezequiel Osvaldo Lavaca",
+      "initDate": "2025-03-14",
+      "dueDate": "2025-12-26",
+      "category": "Investigate Design",
+      "comment": "fdfds ads af faafds  afsd",
+      "status": "Not Started",
+      "tags": [
+        "sample1",
+        "sample2"
+      ],
+      "url": "Ezequiel%20Osvaldo%20Lavaca"
     }
   ],
   "categories": [
