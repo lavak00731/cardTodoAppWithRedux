@@ -7,7 +7,7 @@ import { NavComp } from '../Components/NavComp';
 import { MainComp } from '../Components/MainComp';
 import { useDispatch } from 'react-redux';
 import RootState from '../Interfaces/RootState';
-import { CREATETASK, CREATECATEGORY, CREATETAGS } from '../Constants/reducerConstants';
+import { ADD_TASKS, CREATECATEGORY, CREATETAGS } from '../Constants/reducerConstants';
 import { Footer } from '../Components/Footer';
 import { Modal } from '../Components/Modal';
 
@@ -44,10 +44,10 @@ export const Dashboard = () => {
   }, [])
 
   useEffect(() =>{
-    dispatch({type:CREATETASK, payload: tasks});
+    dispatch({type:ADD_TASKS, payload: tasks});
     dispatch({type:CREATECATEGORY, payload: categories});
     dispatch({type: CREATETAGS, payload: tags});
-  }, [tags, categories, tasks])
+  }, ) // tags, categories, tasks
   
   
 

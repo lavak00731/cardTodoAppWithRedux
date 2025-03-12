@@ -53,10 +53,10 @@ export const Modal = () => {
         putService(url, info, signal);
         dispatch({type: EDITTASK, payload: info });
       } else {
+        // Crear tarea
         const url = `http://localhost:5000/tasks/`; 
-        postService(url, info, signal);
-        const newTasks = tasks.push(info);
-        dispatch({type: EDITTASK, payload: newTasks});
+        postService(url, info, signal); // backend
+        dispatch({ type: CREATETASK, payload: info }); // frontend
       }
       
       handleClose();

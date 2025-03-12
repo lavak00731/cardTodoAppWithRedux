@@ -1,9 +1,9 @@
-import { CREATETASK, REMOVETASK, EDITTASK } from "../Constants/reducerConstants";
+import { CREATETASK, REMOVETASK, EDITTASK, ADD_TASKS } from "../Constants/reducerConstants";
 import TaskType from "../Interfaces/TasksType";
 
 interface actionInt {
     type: string,
-    payload: TaskType,
+    payload: TaskType | TaskType[],
 }
 
 const initialState: { items: TaskType[] } = {
@@ -11,11 +11,19 @@ const initialState: { items: TaskType[] } = {
 };
 
 const TasksReducer = (state = initialState, action:actionInt)=>{ 
+
     switch (action.type) {
+        case ADD_TASKS:
+            return {
+
+                ...state,
+                items: action.payload
+
+            }
         case CREATETASK:
             return {
                 ...state,
-                items: action.payload
+                items: state.items.concat(action.payload) // TaskType
             }
         case EDITTASK:
             /* const editedElem = state.items.find((item:TaskType, index) => item.id === action.payload.id)
@@ -25,7 +33,7 @@ const TasksReducer = (state = initialState, action:actionInt)=>{
                 ...state,
                 //items: [state.items.slice(0, editedElemIndex - 1), editedElem, state.items.slice(editedElemIndex, state.items.length - 1)]
                 items: state.items.map((item: TaskType) => {
-                    if(item.id === action.payload.id) {
+                    if(item.id === action?.payload?.id) {
                         return action.payload
                     } else {
                         return item;

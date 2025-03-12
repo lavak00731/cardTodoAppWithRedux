@@ -27,12 +27,12 @@ export const MainComp = () => {
             {
               categories ? categories?.map((category) => (
                 <li className="basis-70 pt-3 p-2" key={category.id}>
-                  <h2 className="font-sans text-3xl text-center">{category.name}</h2>
-                  <ul className="flex flex-row gap-3">
+                  <h2 className="font-sans text-3xl text-center font-extrabold mb-2">{category.name}</h2>
+                  <ul className="grid grid-flow-row grid-cols-3 gap-2 ">
                   {                    
                     tasks ?  tasks?.filter((task) => task.category === category.name).map((task) => (
                         
-                        <li className="basis-3/12" key={task.id}>
+                        <li key={task.id}>
                           <TaskComponent {...task} />
                         </li>
                       )) : null                  
