@@ -14,7 +14,6 @@ import postService from '../Services/postService';
 export const Modal = () => {
     const idElem = useId();
     const categories = useSelector((store: RootState) => store.categories.items as CategoryType[]);
-    const tasks = useSelector((store: RootState) => store.tasks.items as TaskType[]);
     const tags = useSelector((store: RootState) => store.tags.items as TagType[]);    
     const modalInfo = useSelector((store: RootState) => store.modal as ModalType);
     const dispatch = useDispatch();
@@ -29,6 +28,7 @@ export const Modal = () => {
       url: "",
       status: statusEnum.notStarted
     }
+    
     const [taskData, settaskData] = useState<TaskType>(modalInitialState);
     
     const statuses = Object.values(statusEnum) as string[]
@@ -38,8 +38,7 @@ export const Modal = () => {
     }, [modalInfo, modalInfo.task])
 
     const handleClose = () => {
-      dispatch({type: CLOSEMODAL, payload: modalInitialState});
-      
+      dispatch({type: CLOSEMODAL, payload: modalInitialState});      
     }
     const handleSubmit = (e:FormEvent) => {
       e.preventDefault();
@@ -57,6 +56,7 @@ export const Modal = () => {
         const url = `http://localhost:5000/tasks/`; 
         postService(url, info, signal); // backend
         dispatch({ type: CREATETASK, payload: info }); // frontend
+
       }
       
       handleClose();
@@ -164,7 +164,7 @@ export const Modal = () => {
                   ...prevState,
                   initDate: e.target.value,
                 }))}
-                defaultValue={taskData.initDate}
+                value={taskData.initDate}
               />  
             </div>
             <div className="flex flex-col mb-4">            
@@ -177,9 +177,8 @@ export const Modal = () => {
                 onChange={(e) => settaskData(prevState => ({
                   ...prevState,
                   dueDateDate: e.target.value,
-                }))}
-               
-                defaultValue={taskData.dueDate}
+                }))}               
+                value={taskData.dueDate}
               />  
             </div>
             <div className="flex flex-col mb-4">            
