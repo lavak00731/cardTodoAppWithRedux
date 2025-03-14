@@ -1,10 +1,10 @@
 import TaskType from "../Interfaces/TasksType";
 import { useDispatch } from 'react-redux';
-import { OPENEDITMODAL } from '../Constants/reducerConstants';
+import { OPEN_EDIT_MODAL } from '../Constants/reducerConstants';
 export const TaskComponent = ({id, category, name, initDate, dueDate, comment, tags, url, status}:TaskType) => {
   const dispatch = useDispatch();
   const handleEdit = ({id, category, name, initDate, dueDate, comment, tags, url, status}:TaskType) => {
-    dispatch({type: OPENEDITMODAL, payload: {id,category, name, initDate, dueDate, comment, tags, url, status}})
+    dispatch({type: OPEN_EDIT_MODAL, payload: {id,category, name, initDate, dueDate, comment, tags, url, status}})
   }
   return (
     <section className="max-w-sm rounded overflow-hidden shadow-lg"> 
@@ -26,7 +26,7 @@ export const TaskComponent = ({id, category, name, initDate, dueDate, comment, t
         </div>
         <div className="p-3 bg-cyan-500 flex justify-between">
             <button type="button" onClick={() => handleEdit({id, category, name, initDate, dueDate, comment, tags, url, status})} className="bg-white w-1/3 text-black font-semibold p-3 rounded-full border-2 border-black hover:bg-black hover:text-white focus-within:bg-black focus-within:text-white hover:border-white focus-within:border-white">Edit <span className="sr-only">{name}</span></button>
-            <button type="button" onClick={() => handleRemove({id, category, name, initDate, dueDate, comment, tags, url, status})} className="bg-black w-1/3 text-white font-semibold p-3 rounded-full border-2 border-black hover:bg-white hover:text-black focus-within:bg-white focus-within:text-black hover:border-black focus-within:border-white">Remove <span className="sr-only">{name}</span></button>
+            <button type="button" onClick={() => handleRemove({id, category, name, initDate, dueDate, comment, tags, url, status})} className="bg-black w-1/3 text-white font-semibold p-3 rounded-full border-2 border-white hover:bg-white hover:text-black focus-within:bg-white focus-within:text-black hover:border-black focus-within:border-black">Remove <span className="sr-only">{name}</span></button>
         </div>        
     </section>
   )

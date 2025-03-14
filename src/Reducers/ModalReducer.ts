@@ -1,4 +1,4 @@
-import { OPENCREATEMODAL, OPENEDITMODAL, CLOSEMODAL } from "../Constants/reducerConstants";
+import { OPEN_CREATE_MODAL, OPEN_EDIT_MODAL, CLOSE_MODAL } from "../Constants/reducerConstants";
 import ModalType from "../Interfaces/ModalType";
 import TaskType, {statusEnum} from "../Interfaces/TasksType";
 
@@ -26,20 +26,20 @@ const initialState:ModalType = {
 
 const ModalReducer = (state = initialState, action:actionInt)=>{ 
     switch (action.type) {
-        case OPENCREATEMODAL:
+        case OPEN_CREATE_MODAL:
             return {
                 ...state,
                 isVisible: true,
                 isEdited: false,
             }
-        case OPENEDITMODAL:
+        case OPEN_EDIT_MODAL:
             return {
                 ...state,
                 isVisible: true,
                 isEdited: true,
                 task: action.payload
             }
-        case CLOSEMODAL:
+        case CLOSE_MODAL:
             return {
                 ...state,
                 isVisible: false,
