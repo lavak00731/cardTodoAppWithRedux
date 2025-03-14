@@ -5,7 +5,7 @@ import CategoryType from "../Interfaces/CategoryType";
 import TagType from "../Interfaces/TagType";
 import ModalType from '../Interfaces/ModalType';
 import TaskType, { statusEnum } from '../Interfaces/TasksType';
-import { CLOSEMODAL, EDITTASK, CREATETASK } from '../Constants/reducerConstants';
+import { CLOSE_MODAL, EDIT_TASK, CREATE_TASK } from '../Constants/reducerConstants';
 import createTaskObject from '../Utilities/createTaskObject';
 import putService from '../Services/putService';
 import postService from '../Services/postService';
@@ -38,7 +38,7 @@ export const Modal = () => {
     }, [modalInfo, modalInfo.task])
 
     const handleClose = () => {
-      dispatch({type: CLOSEMODAL, payload: modalInitialState});      
+      dispatch({type: CLOSE_MODAL, payload: modalInitialState});      
     }
     const handleSubmit = (e:FormEvent) => {
       e.preventDefault();
@@ -50,12 +50,12 @@ export const Modal = () => {
       if(modalInfo.isEdited) {
         const url = `http://localhost:5000/tasks/${info.id}`; 
         putService(url, info, signal);
-        dispatch({type: EDITTASK, payload: info });
+        dispatch({type: EDIT_TASK, payload: info });
       } else {
         // Crear tarea
         const url = `http://localhost:5000/tasks/`; 
         postService(url, info, signal); // backend
-        dispatch({ type: CREATETASK, payload: info }); // frontend
+        dispatch({ type: CREATE_TASK, payload: info }); // frontend
 
       }
       

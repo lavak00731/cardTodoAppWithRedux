@@ -1,4 +1,4 @@
-import { CREATETAGS, MODIFYTAGS, REMOVETAGS } from "../Constants/reducerConstants";
+import { CREATE_TAGS, MODIFY_TAGS, REMOVE_TAGS } from "../Constants/reducerConstants";
 import  TagType from "../Interfaces/TagType";
 
 interface actionInt {
@@ -13,13 +13,13 @@ const initialState = {
 
 const TasksReducer = (state = initialState, action:actionInt)=>{ 
     switch (action.type) {
-        case CREATETAGS:
-        case MODIFYTAGS:
+        case CREATE_TAGS:
+        case MODIFY_TAGS:
             return {
                 ...state,
                 items: action.payload
             }
-        case REMOVETAGS:
+        case REMOVE_TAGS:
             return {
                 ...state,
                 items: state.items.filter(task => task !== action.payload[0])

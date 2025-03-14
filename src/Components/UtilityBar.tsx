@@ -2,14 +2,14 @@ import { useId } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import RootState from "../Interfaces/RootState";
 import TagType from '../Interfaces/TagType';
-import { OPENCREATEMODAL } from "../Constants/reducerConstants";
+import { OPEN_CREATE_MODAL } from "../Constants/reducerConstants";
 
 export const UtilityBar = () => {
   const id = useId();
   const tags = useSelector((store: RootState) => store.tags.items as TagType[]);
   const dispatch = useDispatch();
   const createTask = () => {
-    dispatch({type: OPENCREATEMODAL});
+    dispatch({type: OPEN_CREATE_MODAL});
   }
   return (
     <>

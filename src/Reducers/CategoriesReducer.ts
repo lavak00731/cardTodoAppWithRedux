@@ -1,4 +1,4 @@
-import { CREATECATEGORY, MODIFYCATEGORY } from "../Constants/reducerConstants";
+import { CREATE_CATEGORY, MODIFY_CATEGORY } from "../Constants/reducerConstants";
 import CategoryType from "../Interfaces/CategoryType";
 
 interface actionInt {
@@ -13,8 +13,8 @@ const initialState = {
 
 const CategoriesReducer = (state = initialState, action:actionInt)=>{ 
     switch (action.type) {
-        case CREATECATEGORY:
-        case MODIFYCATEGORY:
+        case CREATE_CATEGORY:
+        case MODIFY_CATEGORY:
             return {
                 ...state,
                 items: action.payload
