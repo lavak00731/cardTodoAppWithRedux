@@ -1,7 +1,7 @@
 {
   "tasks": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Prepare drawing",
       "initDate": "2024-10-14",
       "dueDate": "2025-11-25",
@@ -14,7 +14,7 @@
       "url": "/prepare-drawing"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Prepare picture",
       "initDate": "2024-12-10",
       "dueDate": "2025-12-25",
@@ -29,7 +29,7 @@
       "url": "/prepare-picture"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Prepare Book",
       "initDate": "2024-12-13",
       "dueDate": "2026-12-25",
@@ -43,7 +43,7 @@
       "url": "/prepare-book"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Prepare Book2",
       "initDate": "2024-10-11",
       "dueDate": "2025-12-25",
@@ -56,7 +56,7 @@
       "url": "/prepare-book2"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Ezequiel Osvaldo Lavaca",
       "initDate": "2025-03-14",
       "dueDate": "2025-12-26",
@@ -71,7 +71,7 @@
       "url": "Ezequiel%20Osvaldo%20Lavaca"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Create New Task",
       "initDate": "2025-03-13",
       "dueDate": "2025-10-23",
@@ -85,7 +85,7 @@
       "url": "Create%20New%20Task"
     },
     {
-      "id": 1741725927554,
+      "id": "1741725927554",
       "name": "checkElement",
       "initDate": "2025-03-21",
       "dueDate": "2025-11-27",
@@ -99,20 +99,7 @@
       "url": "checkElement"
     },
     {
-      "id": 1741735326062,
-      "name": "Charlando con Nico",
-      "initDate": "2025-03-07",
-      "dueDate": "2025-03-28",
-      "category": "Investigate Design",
-      "comment": "fdsfdsfdsafdaffdsa",
-      "status": "Not Started",
-      "tags": [
-        "sample1"
-      ],
-      "url": "Charlando%20con%20Nico"
-    },
-    {
-      "id": 1741735425099,
+      "id": "1741735425099",
       "name": "Charla nico2",
       "initDate": "2025-03-14",
       "dueDate": "2025-07-25",
@@ -125,7 +112,7 @@
       "url": "Charla%20nico2"
     },
     {
-      "id": 1741735661913,
+      "id": "1741735661913",
       "name": "Test task2",
       "initDate": "2025-03-06",
       "dueDate": "2025-05-30",
@@ -138,20 +125,7 @@
       "url": "Test%20task2"
     },
     {
-      "id": 1741735718620,
-      "name": "tarea x",
-      "initDate": "2025-03-21",
-      "dueDate": "2025-03-28",
-      "category": "Investigate Design",
-      "comment": "fsdfsdfsfsf faf a af fsfd",
-      "status": "Not Started",
-      "tags": [
-        "sample1"
-      ],
-      "url": "tarea%20x"
-    },
-    {
-      "id": 1741735751253,
+      "id": "1741735751253",
       "name": "test123",
       "initDate": "2025-03-21",
       "dueDate": "2025-03-28",
@@ -164,7 +138,7 @@
       "url": "test123"
     },
     {
-      "id": 1741735805923,
+      "id": "1741735805923",
       "name": "test3",
       "initDate": "2025-03-14",
       "dueDate": "2025-04-24",
@@ -178,7 +152,7 @@
       "url": "test3"
     },
     {
-      "id": 1741735810787,
+      "id": "1741735810787",
       "name": "test3",
       "initDate": "2025-03-14",
       "dueDate": "2025-04-24",
@@ -192,7 +166,7 @@
       "url": "test3"
     },
     {
-      "id": 1741735961740,
+      "id": "1741735961740",
       "name": "abc",
       "initDate": "2025-03-21",
       "dueDate": "2025-03-28",
@@ -205,7 +179,7 @@
       "url": "abc"
     },
     {
-      "id": 1741735966212,
+      "id": "1741735966212",
       "name": "abc",
       "initDate": "2025-03-21",
       "dueDate": "2025-03-28",
@@ -218,7 +192,7 @@
       "url": "abc"
     },
     {
-      "id": 1741736080401,
+      "id": "1741736080401",
       "name": "intringulis",
       "initDate": "2025-03-21",
       "dueDate": "2025-03-28",
@@ -231,7 +205,7 @@
       "url": "intringulis"
     },
     {
-      "id": 1741736444893,
+      "id": "1741736444893",
       "name": "probe",
       "initDate": "2025-03-13",
       "dueDate": "2025-05-22",
@@ -244,7 +218,7 @@
       "url": "probe"
     },
     {
-      "id": 1741737607043,
+      "id": "1741737607043",
       "name": "PruebaDiseno",
       "initDate": "2025-03-28",
       "dueDate": "2025-06-27",
@@ -257,7 +231,7 @@
       "url": "PruebaDiseno"
     },
     {
-      "id": 1741737888923,
+      "id": "1741737888923",
       "name": "eze31",
       "initDate": "2025-03-28",
       "dueDate": "2025-06-27",
@@ -270,7 +244,7 @@
       "url": "eze31"
     },
     {
-      "id": 1741863626911,
+      "id": "1741863626911",
       "name": "New Task Raka Tiki",
       "initDate": "2025-03-21",
       "dueDate": "2025-03-28",
@@ -283,7 +257,7 @@
       "url": "New%20Task%20Raka%20Tiki"
     },
     {
-      "id": 1741864288313,
+      "id": "1741864288313",
       "name": "New Tasked created from Modal2",
       "initDate": "2025-03-28",
       "dueDate": "2025-06-27",

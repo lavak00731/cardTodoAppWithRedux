@@ -1,11 +1,14 @@
 import TaskType from "../Interfaces/TasksType";
 import { useDispatch } from 'react-redux';
-import { OPEN_EDIT_MODAL } from '../Constants/reducerConstants';
+import { OPEN_EDIT_MODAL, OPEN_REMOVE_MODAL } from '../Constants/reducerConstants';
 export const TaskComponent = ({id, category, name, initDate, dueDate, comment, tags, url, status}:TaskType) => {
   const dispatch = useDispatch();
   const handleEdit = ({id, category, name, initDate, dueDate, comment, tags, url, status}:TaskType) => {
     dispatch({type: OPEN_EDIT_MODAL, payload: {id,category, name, initDate, dueDate, comment, tags, url, status}})
-  }
+  };
+  const handleRemove = ({id, category, name, initDate, dueDate, comment, tags, url, status}:TaskType) => {
+    dispatch({type: OPEN_REMOVE_MODAL, payload: {id,category, name, initDate, dueDate, comment, tags, url, status}})
+  };
   return (
     <section className="max-w-sm rounded overflow-hidden shadow-lg"> 
         <div className="px-6 py-4">

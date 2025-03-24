@@ -11,15 +11,15 @@ interface CreateEditFormProps {
   modalInitialState: TaskType;
   modalInfo: ModalType;
   handleSubmit: (e: FormEvent) => void;
+  handleClose: () => void;
 }
 
-export const CreateEditForm = ({ modalInitialState, modalInfo, handleSubmit }: CreateEditFormProps) => {
+export const CreateEditForm = ({ modalInitialState, modalInfo, handleSubmit, handleClose }: CreateEditFormProps) => {
   const idElem = useId(); 
   const categories = useSelector((store: RootState) => store.categories.items as CategoryType[]);
   const tags = useSelector((store: RootState) => store.tags.items as TagType[]);    
   const [taskData, settaskData] = useState<TaskType>(modalInitialState);    
   const statuses = Object.values(statusEnum) as string[];
-  console.log(taskData)
   useEffect(() => {
     settaskData(modalInfo.task);  
   }, [modalInfo, modalInfo.task]);

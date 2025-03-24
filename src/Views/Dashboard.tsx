@@ -43,13 +43,32 @@ export const Dashboard = () => {
     }
   }, [])
 
+
+
+
   useEffect(() =>{
-    dispatch({type:ADD_TASKS, payload: tasks});
-    dispatch({type:CREATE_CATEGORY, payload: categories});
-    dispatch({type: CREATE_TAGS, payload: tags});
-  }, ) // tags, categories, tasks
+    dispatch({type:ADD_TASKS, payload: tasks}); // []
+    dispatch({type:CREATE_CATEGORY, payload: categories}); // []
+    dispatch({type: CREATE_TAGS, payload: tags}); // []
+  },[tasks, categories, tags]) // [tasks, categories, tags]
   
   
+  // const [products, setProducts] = useState([]);
+  // const [articles, setArticles] = useState([]);
+
+  // useEffect(() => {
+  //   setProducts([1, 2, 3, 4, 5]);
+  //   setArticles([1, 2, 3, 4, 5]);
+  // }, [])
+
+  // useEffect(() => {
+  //   console.log(products); // [], [product1, product2, product3]
+  // }, [products]);
+
+  // useEffect(() => {
+  //   console.log(articles);
+  // }, [articles])
+
 
   return (
     <Layout>
