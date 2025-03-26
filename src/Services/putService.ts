@@ -1,6 +1,7 @@
 import TaskType from "../Interfaces/TasksType";
 
 const putService = async (url:string, task: TaskType , signal:AbortSignal) => {
+    console.log(task)
     try {
         const response = await fetch(url, {
             signal,

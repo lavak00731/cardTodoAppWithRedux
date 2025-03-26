@@ -3,7 +3,7 @@ import TaskType from "../Interfaces/TasksType";
 
 interface actionInt {
     type: string,
-    payload: TaskType | TaskType[],
+    payload: TaskType[],
 }
 
 const initialState: { items: TaskType[] } = {
@@ -11,7 +11,7 @@ const initialState: { items: TaskType[] } = {
 };
 
 const TasksReducer = (state = initialState, action:actionInt)=>{ 
-
+    console.log(action)
     switch (action.type) {
         case ADD_TASKS:
             return {
@@ -33,8 +33,8 @@ const TasksReducer = (state = initialState, action:actionInt)=>{
                 ...state,
                 //items: [state.items.slice(0, editedElemIndex - 1), editedElem, state.items.slice(editedElemIndex, state.items.length - 1)]
                 items: state.items.map((item: TaskType) => {
-                    if(item.id === action?.payload?.id) {
-                        return action.payload
+                    if(item.id === action?.payload[0]?.id) {
+                        return action.payload[0]
                     } else {
                         return item;
                     }
@@ -43,7 +43,7 @@ const TasksReducer = (state = initialState, action:actionInt)=>{
         case REMOVE_TASK:
             return {
                 ...state,
-                items: state.items.filter(task => task.id !== (action.payload as TaskType).id)
+                items: state.items.filter(task => task.id !== (action.payload[0] as TaskType).id)
             }
         default:
             return state;

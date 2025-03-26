@@ -20,6 +20,7 @@ export const CreateEditForm = ({ modalInitialState, modalInfo, handleSubmit, han
   const tags = useSelector((store: RootState) => store.tags.items as TagType[]);    
   const [taskData, settaskData] = useState<TaskType>(modalInitialState);    
   const statuses = Object.values(statusEnum) as string[];
+
   useEffect(() => {
     settaskData(modalInfo.task);  
   }, [modalInfo, modalInfo.task]);
@@ -137,10 +138,11 @@ export const CreateEditForm = ({ modalInitialState, modalInfo, handleSubmit, han
                 required 
                 onChange={(e) => settaskData(prevState => ({
                   ...prevState,
-                  dueDateDate: e.target.value,
+                  dueDate: e.target.value,
                 }))}               
                 value={taskData.dueDate}
-              />  
+              /> 
+              <p>{taskData.dueDate}</p> 
             </div>
             <div className="flex flex-col mb-4">            
               <label className="text-gray-900 mb-1" htmlFor={idElem+'_comments'}>Description</label>

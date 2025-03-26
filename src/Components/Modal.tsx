@@ -20,7 +20,7 @@ export const Modal = () => {
       name: "",
       initDate: "",
       dueDate: "",
-      category: "",
+      category: "Investigate Design",
       comment: "",
       tags: [],
       url: "",
@@ -38,8 +38,9 @@ export const Modal = () => {
       const signal = getAbortSignal();
       const task = modalInfo.task;
       const url = `http://localhost:5000/tasks/${task.id}`;
+      const payloadArray = [task]
       deleteService(url, task, signal);
-      dispatch({type: REMOVE_TASK, payload: task});
+      dispatch({type: REMOVE_TASK, payload: payloadArray});
       handleClose()
     }
     const handleSubmit = (e:FormEvent) => {
@@ -48,16 +49,16 @@ export const Modal = () => {
       const info:TaskType = createTaskObject(body, modalInfo);
       
       const signal = getAbortSignal();
-       
+      const payloadArray = [info]
       if(modalInfo.isEdited) {
         const url = `http://localhost:5000/tasks/${info.id}`; 
         putService(url, info, signal);
-        dispatch({type: EDIT_TASK, payload: info });
+        dispatch({type: EDIT_TASK, payload: payloadArray });
       } else {
         // Crear tarea
         const url = `http://localhost:5000/tasks/`; 
         postService(url, info, signal); // backend
-        dispatch({ type: CREATE_TASK, payload: info }); // frontend
+        dispatch({ type: CREATE_TASK, payload: payloadArray }); // frontend
 
       }      
       handleClose();

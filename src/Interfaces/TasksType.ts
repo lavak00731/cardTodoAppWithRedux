@@ -5,7 +5,7 @@ export enum statusEnum {
 }
 
 interface TaskType {
-    id: number,
+    id: string,
     name: string,
     initDate: string,
     dueDate: string,
