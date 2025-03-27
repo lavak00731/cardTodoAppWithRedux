@@ -18,7 +18,7 @@ import { ProtectedRoutes } from '../Components/ProtectedRoutes';
 import { FakeApp } from './fake/FakeApp';
 import TasksReducer from '../Reducers/TasksReducer';
 import TaskType, { statusEnum } from '../Interfaces/TasksType';
-import { CREATE_TASK, REMOVE_TASK } from '../Constants/reducerConstants';
+import { CREATE_TASK, REMOVE_TASK, EDIT_TASK } from '../Constants/reducerConstants';
 
 // Testing unitario -> solamente componente, solamente redux
 // Testing integracion -> componente, store
@@ -54,14 +54,12 @@ describe('Dashboard tests', ()=>{
         };
         let item: TaskType;
         let state: {
-            items: TaskType | TaskType[];
-        } | {
-            items: (TaskType | TaskType[])[];
+            items: TaskType[];
         };
         
         beforeAll(() => {
             item = {
-                id: 1741735425099,
+                id: '1741735425099',
                 name: "Charla nico2",
                 initDate: "2025-03-14",
                 dueDate: "2025-07-25",
@@ -73,7 +71,7 @@ describe('Dashboard tests', ()=>{
                 ],
                 url: "Charla%20nico2"
             }
-            state = TasksReducer(initialState, { type: CREATE_TASK, payload: item })
+            state = TasksReducer(initialState, { type: CREATE_TASK, payload: [item] })
         });
         
         test('Should create the task in the redux store', () => {
@@ -89,18 +87,31 @@ describe('Dashboard tests', ()=>{
             }
         });
         test('Should erase a task in the redux store', () =>{
-            const statetoRemoved = TasksReducer(state, { type: REMOVE_TASK, payload: item });            
+            const statetoRemoved = TasksReducer(state, { type: REMOVE_TASK, payload: [item] });            
 
             if(Array.isArray(statetoRemoved) && Array.isArray(state)) {
                 expect(statetoRemoved.length).not.toEqual(state.length)
             }
-            .ite
         });
         test('Should modify a task in the redux store', () => {
-            const initialState: { items: TaskType[] } = {
-                items: []
-            };
-            const state = TasksReducer(initialState, { type: CREATE_TASK, payload: item })
+            const newState =  {
+                id: '1741735425099',
+                name: "Charla nico123",
+                initDate: "2025-03-14",
+                dueDate: "2025-07-25",
+                category: "Design",
+                comment: "fadsfadsfdsa sd fasdf asf asf asf asf",
+                status: statusEnum.notStarted,
+                tags: [
+                    "sample2"
+                ],
+                url: "Charla%20nico2"
+            }
+            const statetoModify = TasksReducer(state, { type: EDIT_TASK, payload: [newState] });
+            if(Array.isArray(statetoModify)) {
+                expect(statetoModify[0].name).toStrictEqual(newState.name)
+            }
+            
         })
     })
 })
